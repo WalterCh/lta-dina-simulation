@@ -1,0 +1,141 @@
+\documentclass[11pt,openany,a4paper]{book}
+% ---------------------------------------------------------------------------- %
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{array}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{bm}
+\usepackage{background}
+\usepackage{caption}
+\captionsetup[table]{name=Tabla}
+%\usepackage{enumerate}
+\usepackage[T1]{fontenc}  % Para uso de tildes del teclado.
+\usepackage{float}
+\usepackage[colorlinks=true,urlcolor=red,citecolor=green,linkcolor=blue]{hyperref}
+%\usepackage{indentfirst} 				% indentación del primer parrafo
+\usepackage[top=2.54cm, bottom=2.54cm, left=3cm, right=2.54cm]{geometry} %margenes
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{longtable}
+%\usepackage{lscape}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[round]{natbib}              % libreria para la bibliografia
+%\usepackage{pifont}
+%\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{subfigure} 					% uso de várias figuras en una sola
+\usepackage{tabularx}
+%\usepackage[small,compact]{titlesec} 	% encabezamiento de los títulos: menores y compactos
+%\usepackage[nottoc]{tocbibind} 			% para que la bibliografia aparezca en el indice
+\usepackage{url}
+\usepackage{xcolor}
+\definecolor{miverde}{rgb}{0,0.6,0}
+\definecolor{migris}{rgb}{0.5,0.5,0.5}
+\definecolor{mimalva}{rgb}{0.58,0,0.82}
+
+% -----------------------------------librerias extras---------------------------------- %
+\lstset{ %
+	backgroundcolor=\color{white},   % Indica el color de fondo; necesita que se añada \usepackage{color} o \usepackage{xcolor}
+	basicstyle=\footnotesize,        % Fija el tamaño del tipo de letra utilizado para el código
+	breakatwhitespace=false,         % Activarlo para que los saltos automáticos solo se apliquen en los espacios en blanco
+	breaklines=true,                 % Activa el salto de línea automático
+	captionpos=b,                    % Establece la posición de la leyenda del cuadro de código
+	commentstyle=\color{miverde},    % Estilo de los comentarios
+	deletekeywords={...},            % Si se quiere eliminar palabras clave del lenguaje
+	escapeinside={\%*}{*)},          % Si quieres incorporar LaTeX dentro del propio código
+	extendedchars=true,              % Permite utilizar caracteres extendidos no-ASCII; solo funciona para codificaciones de 8-bits; para UTF-8 no funciona. En xelatex necesita estar a true para que funcione.
+	frame=single,	                   % Añade un marco al código
+	keepspaces=true,                 % Mantiene los espacios en el texto. Es útil para mantener la indentación del código(puede necesitar columns=flexible).
+	keywordstyle=\color{blue},       % estilo de las palabras clave
+	language=R,                 % El lenguaje del código
+	otherkeywords={*,...},           % Si se quieren añadir otras palabras clave al lenguaje
+	numbers=left,                    % Posición de los números de línea (none, left, right).
+	numbersep=8pt,                   % Distancia de los números de línea al código
+	numberstyle=\small\color{migris}, % Estilo para los números de línea
+	rulecolor=\color{black},         % Si no se activa, el color del marco puede cambiar en los saltos de línea entre textos que sea de otro color, por ejemplo, los comentarios, que están en verde en este ejemplo
+	showspaces=false,                % Si se activa, muestra los espacios con guiones bajos; sustituye a 'showstringspaces'
+	showstringspaces=false,          % subraya solamente los espacios que estén en una cadena de esto
+	showtabs=false,                  % muestra las tabulaciones que existan en cadenas de texto con guión bajo
+	stepnumber=1,                    % Muestra solamente los números de línea que corresponden a cada salto. En este caso: 1,3,5,...
+	stringstyle=\color{mimalva},     % Estilo de las cadenas de texto
+	tabsize=1,	                   % Establece el salto de las tabulaciones a 2 espacios
+	title=\lstname                   % muestra el nombre de los ficheros incluidos al utilizar \lstinputlisting; también se puede utilizar en el parámetro caption
+}
+
+
+
+\begin{document}
+	%-------------------------------------------------------
+	\frontmatter
+	\onehalfspacing 
+	
+	%Caratula
+	\include{otros/caratula}
+	
+	%Dedicaoria
+	\include{otros/dedicatoria}
+	
+	%Agradecimientos
+	\include{otros/agradecimientos}
+	
+	%Resumen
+	\include{otros/resumen}
+	
+	%Abstract
+	\include{otros/abstract}
+	
+	%Tabla de contenidos 
+	\tableofcontents
+	%----------------------------------------------------------
+	
+	%\include{otros/list_abrevia}
+	
+	% lista de Figuras
+	%\listoffigures    
+	
+	% lista de cuadros
+	%\listoftables                
+	
+	% ---------------------------------------------------------------------------- 
+	
+	
+	
+	%----------------------------------------------------------------------------
+	\mainmatter
+	
+	%Introduccion
+	\include{capitulos/cap-introduccion}
+		
+	%Conceptos
+	\include{capitulos/cap-conceptos}
+	
+	%Modelo
+	\include{capitulos/cap-modelo}
+	
+	%Simluación
+	\include{capitulos/cap-simulacion}
+	
+	
+	%-------------------------------------------------------------------------------
+	\backmatter
+	
+	%Apéndice	
+	\appendix
+	
+	%Codigo
+	\include{apendice/ape-1}
+	
+	
+	
+	
+	
+	
+	
+\end{document}

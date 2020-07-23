@@ -1,0 +1,145 @@
+
+\chapter{Modelos de transici\'{o}n de clases latentes cognitivas} \label{cap:modelo}
+	Seg\'{u}n \cite{kaya2017assessing} el modelo de transici\'{o}n de clases latentes cognitivas permite investigar hip\'{o}tesis acerca del efecto de una intervenci\'{o}n mediante el cambio en las probabilidades de transici\'{o}n antes y despu\'{e}s de esta con relaci\'{o}n al estado cognitivo. Esta clase de modelos es una excelente manera de estudiar cambios en el desarrollo y crecimiento, tales como las transiciones entre los estados descritos en la teoria de Piaget, seg\'{u}n lo citado por \cite{li2016latent}.
+	Suponga que observamos $J$ variables categ\'{o}ricas manifiestas polit\'{o}micas $Y_1, Y_2, ..., Y_j$, donde $Y_j$ tiene $R_j$ posibles resultados. Se asume que estas variables deben ser la respuesta de un individuo a una evaluaci\'{o}n con $J$ items. El modelo de transici\'{o}n de clases latentes con solo dos puntos en el tiempo ($T=2$), expresa que la distribuci\'{o}n de probabilidad conjunta de las respuestas $Y_{1} = [Y_{1,1},Y_{2,1}, ... Y_{J,1}]$, $Y_{2} = [Y_{1,2},Y_{2,2}, ... Y_{J,2}]$  de cualquier individuo, donde $Y_{j,t}$ denota a su respuesta al item $j$ en el tiempo $t$, viene dada por:
+
+	\begin{align}
+		P&\left[\mathbf{Y}_{1} =  \mathbf{y}_{1}, \mathbf{Y}_{2} =\mathbf{y}_{2}\right]  =  \notag \\
+		& = \sum _{ { c }_{ 1 }=1 }^{ C }{ \sum _{ { c }_{ 2 }=1 }^{ C }{ P\left( { Y }_{ 1 }=\mathbf{ y }_{ 1 },{ Y }_{ 2 }=\mathbf{ y }_{ 2 }|{ C }_{ 1 }={ c }_{ 1 },{ C }_{ 2 }={ c }_{ 2 } \right) P\left( { C }_{ 2 }={ c }_{ 2 }|{ C }_{ 1 }={ c }_{ 1 } \right) P\left( { C }_{ 1 }={ c }_{ 1 } \right)  }  } \label{3.1} \\
+		& =\sum _{ { c }_{ 1 }=1 }^{ C } \sum _{ { c }_{ 2 }=1 }^{ C }{ { \delta  }_{ { c }_{ 1 } }{ \tau  }_{ { c }_{ 2 }|{ c }_{ 1 } }P\left( { Y }_{ 1 }=\mathbf{y}_{1}|{ C }_{ 1 }={ c }_{ 1 } \right) P\left( { Y }_{ 2 }=\mathbf{y}_{2}|{ C }_{ 2 }={ c }_{ 2 } \right)} \\
+		\end{align}
+		
+	\begin{equation}
+	=\sum _{ { c }_{ 1 }=1 }^{ C } \sum _{ { c }_{ 2 }=1 }^{ C }{ { \delta  }_{ { c }_{ 1 } }{ \tau  }_{ { c }_{ 2 }|{ c }_{ 1 } }\prod _{ j=1 }^{ J }{ \prod _{ { r }_{ j,1 }=1 }^{ { R }_{ j } }{ { \rho  }_{ j,{ r }_{ j,1 }|{ c }_{ 1 } }^{ I\left( { y }_{ j,1 }={ r }_{ j,1 } \right)  } }  }  } \prod _{ j=1 }^{ J }{ \prod _{ { r }_{ j,2 }=1 }^{ { R }_{ j } }{ \rho _{ j,{ r }_{ j,2 }|{ c }_{ 2 } }^{ I\left( { y }_{ j,2 }={ r }_{ j,2 } \right)  } }  } . \hspace{3.2cm}\label{3.1}
+	\end{equation}
+	
+	\begin{equation}
+		=\sum _{ {c}_{1}=1 }^{C}{\sum _{ {c}_{2}=1 }^{C}{\delta _{c_1} \tau_{c_2|c_1} }}\prod _{ t=1 }^{ 2 }{  \prod_{ j=1 }^{J}{\prod_{ r_{j,t}=1 }^{R_j}{\rho_{j,r_{j,t}|c_t}^{I(y_{j,t}=r_{j,t})}  } }    } , \label{3.1}
+	\end{equation}
+	
+	donde
+	
+	\begin{equation}
+		\sum _{ c_{1} =1 }^{C}{\delta _{c_{1}} } =1, \sum_{c_{2}=1}^{C_{L}}{\tau_{c_{2} | c_{1}}}=1, \sum _{ r_{j,t}=1 }^{R_j}{\rho_{j,r_{j,t}|c_t} }  =1  ,\label{3.7}
+	\end{equation}
+$\delta _{c1}$ la probabilidad de pertenencia del individuo a la clase $c_1$ en el tiempo $1$, $\tau_{c2|c1}$ es la probabilidad de transici\'{o}n de que el individuo cambie a una clase $c_2$ en el tiempo $2$ dado que \'{e}l ha pertenecido a una clase $c_1$ en el tiempo $1$, $I(y_{j,t}=r_{j,t})$ es una variable indicadora que es igual a $1$ si la respuesta al item $j$ en el tiempo $t$ es  $r_{j,t}$ y $0$ en caso contrario, y $\rho_{j,r_{j,t}|c_t}$, es la probabilidad de que la respuesta del individuo al item $j$ en el tiempo $t$ sea $r_{j,t}$ condicionado a su membresia a la clase latente $c_t$.\\
+	La consideraci\'{o}n de un modelo con m\'{a}s de dos puntos en el tiempo es inmediata pero implica el incremento del n\'{u}mero de par\'{a}metros, no s\'{o}lo en t\'{e}rminos de las probabilidades de transici\'{o}n, sino tambi\'{e}n en los par\'{a}metros dentro de las probabilidades de respuesta al item del modelo para $\rho_{j,r_{j,t}|c_t}$. Este modelo se presenta a continuaci\'{o}n:
+	
+	\begin{equation}
+		P\left[\mathbf{Y}=\mathbf{y}\right]=\sum_{c_{1}=1}^{C} \ldots \sum_{c_{T}=1}^{C} \delta_{c_{1}} \tau_{c_{2}|c_{1}}^{(1)}\ldots \tau_{c_{T} | c_{T-1}}^{(T)} \prod_{t=1}^{T}{ \prod _{ j=1 }^{ J }{ \prod _{ { r }_{ j,t }=1 }^{ { R }_{ j } }{ { \rho  }_{ j,{ r }_{ j,t }|{ c }_{ t } }^{ I({ y }_{ j,t }={ r }_{ j,t }) } }  }  }  \label{3.8}
+,
+\end{equation}
+donde $\tau_{{a}|{b}}^{T}$ representa la probabilidad de transici\'{o}n de que un individuo en la clase $b$ en el tiempo $t-1$ pase a la clase $a$ en el tiempo $t$\\
+	En este cap\'{i}tulo detallaremos los modelos longitudinales DINA y DINO para clasificar a los examinados con respecto al dominio de atributos en m\'{u}ltiples per\'{i}odos de medici\'{o}n. Estos modelos clasifican a los examinados en los estados latentes a trav\'{e}s de mediciones consecutivas y estiman las probabilidades de transici\'{o}n entre clases de los examinados desde el tiempo $1$ hasta el tiempo $T$.\\
+	El modelo de transici\'{o}n de clases latentes cognitivas DINA que denotaremos por LTA-DINA, estima la probabilidad de que un individuo presente un patrón particular de respuestas como una funci\'{o}n de sus probabilidades de membres\'{i}a a cada clase cognitiva en el tiempo 1, las probabilidades de transici\'{o}n entre las clases cognitivas y las probabilidades de observar una respuesta en cada punto en el tiempo condicionado a su clase cognitiva de membres\'{i}a. El modelo LTA-DINA integra el modelo LTA con el DINA a trav\'{e}s de:
+	
+	\begin{align}
+		P&\left[\mathbf{Y}_{1} =  \mathbf{y}_{1},\mathbf{Y}_{2} =\mathbf{y}_{2},...,\mathbf{Y}_{T} =\mathbf{y}_{T}\right] =  
+\notag \\
+		& = \sum_{c_{1}=1}^{C} \ldots \sum_{c_{T}=1}^{C} \delta_{c_{1}} \tau_{c_{2} | c_{1}} \ldots \tau_{c_{T} | c_{T-1}} \prod_{t=1}^{T} \prod_{j=1}^{J}  \left( 1-{ P }_{ { c }_{ { t }_{ j } } } \right) ^{ I({ y }_{ j,t }=0) }_{  }{ P }_{ { c }_{ t }j }^{ I({ y }_{ j,t }=1) }, 
+\label{3.9}
+\end{align}
+donde ${ P }_{ { c }_{ t }j }=(1-{ s }_{ j })^{ { \eta  }_{ { c }_{ t }j } }{ { g }_{ j }^{ (1-{ \eta  }_{ { c }_{ t }j }) } }$ es la probabilidad dada en (2.30) y ${\eta }_{ { c }_{ t }j }$ es el estado del conocimiento de los individuos en la clase $c_{t}$ para el item $j$\\
+De la misma manera, podemos definir el modelo de transici\'{o}n DINO, que lo denotaremos por LTA-DINO mediante:
+	\begin{equation}\label{3.10}
+	P\left[\mathbf{Y}=\mathbf{y}\right]=\sum_{c_{1}=1}^{C} \ldots \sum_{c_{t}=1}^{C} \delta_{c_{1}} \tau_{c_{2} | c_{1}} \ldots \tau_{c_{t} | c_{t-1}} \prod_{t=1}^{T} \prod_{j=1}^{J}  \left( 1-{ P }_{ { c }_{ { t }_{ j } } } \right) ^{ I({ y }_{ j,t }=0) }_{  }{ P }_{ { c }_{ t }j }^{ I({ y }_{ j,t }=1) },
+	\end{equation}
+	donde ${ P }_{ { c }_{ t }j }=(1-{ s }_{ j })^{ { \omega }_{ { c }_{ t }j } }{ { g }_{ j }^{ (1-{ \omega }_{ { c }_{ t }j }) } }$ es la probabilidad dada en (2.34) y ${\omega}_{ { c }_{ t }j }$ es el estado de conocimiento para el modelo DINO, la cual lo diferencia del modelo DINA cuyo estado de conocimiento es ${\eta }_{ { c }_{ t }j }$.\\
+	Adicionalmente, a la estimaci\'{o}n de estos par\'{a}metros, ser\'{a} de inter\'{e}s estimar las probabilidades de pertenencia aposteriori para determinar las clases para cada individuo en cada punto en el tiempo. Para el uso pr\'{a}ctico de los modelos longitudinales DINA y DINO, los par\'{a}metros de inter\'{e}s son probabilidades aposteriori y las probabilidades de transici\'{o}n. Estas brindan informaci\'{o}n individual y son usadas para evaluar el rendimiento de cada estudiante basados en su clase grupal estimada. 
+	Por otro lado, las probabilidades de transici\'{o}n consideran las probabilidades de permanencia en la misma clase o el movimiento entre las clases de un tiempo $t$ a un tiempo $t+1$ para los examinados que est\'{a}n en la misma clase cognitiva, quienes nos brindan una idea general del \'{e}xito del tratamiento aplicado entre las 2 mediciones.           
+	
+	\section{Estimaci\'{o}n del modelo}	
+El modelo de de transición latente en combinación con el modelo de diagnóstico cognitivo DINA(LTA-DINA)nos pemite analizar el comportamiento de los evaluados en las diferentes clases cognitivas a través de las probabilidades de transición. Para la estimación de este modelo desarrollaremos el método de máxima verosimilitud via el algoritmo de Esperanza-Maximización (EM). La implementación de este se encuentra en el paquete Mplus (Version 7; Muthén y Muthén, 2017).\\     
+	Los par\'{a}metros en un modelo de transici\'{o}n latente incluyen la probabilidad de la membresia en el tiempo 1, las probabilidades de transici\'{o}n y los parámetros involucrados en la probabilidad de respuesta al item condicionadas a la clase latente.\
+	
+	La probabilidad conjunta de un individuo, que pertenece al conjunto de clases $\mathbf{c}=\left(c_{1}, \dots, c_{T}\right)$ en el tiempo, proporcione un cierto patrón de respuestas es:
+	
+	\begin{equation}
+		P\left[\mathbf{ Y }_{ 1 }=\mathbf{ y }_{1},...,\mathbf{Y}_{ T }=\mathbf{ y }_{T}| {C}_={c} \right] =\left[ { \delta  }_{ c1 }\prod _{ t=2 }^{ T }{ { \tau  }_{ { c }_{ t }|{ c }_{ t-1 } }^{ (t) } }  \right] \times \left[ \prod _{ t=1 }^{ T }{ \prod _{ j=1 }^{ J }{ \prod _{ r_{j}=1 }^{ { R }_{ j } }{ { \rho  }_{ j,r_{j},t|{ c }_{ t } }^{ I({ y }_{ j,t }=r_{j,t}) } }  }  }  \right], \label{3.11}	
+	\end{equation}	
+donde ${ \delta  }_{ { c }_{ 1 } }=P\left[ { C }_{ 1 }={ c }_{ 1 } \right]$ ,${ \tau  }_{ { c }_{ t }|{c}_{ t-1 } }^{ (t) }=P\left[ { C }_{ t }={ c }_{ t }|{C}_{ t-1 }={ c }_{ t-1 } \right]$ y ${ \rho  }_{ j,r,j|{ c }_{ t } }=P\left[ { Y }_{ jt }=y_{j,t}|{ C }_{ t }={ c }_{ t } \right]$. Se asume que ${ Y }_{ 1t },...,{ Y }_{ Jt }$ son condicionalmente independientes dentro de cada clase ${ c }_{ t }$ para $t=1,...,T$. Este supuesto, llamado de independencia local nos permite realizar inferencias acerca de la variable de clase latente.(Lazarsfeld PF et al.,1968). Tambi\'{e}n se asume que la secuencia $\{ C_{t} \}$ donde ${C}_{t}$ denota a la clase de pertenencia de un individuo en el tiempo $t$, constituye una cadena de Markov de primer orden para $t=2,...,T$. En la ecuaci\'{o}n (3.10) solo la probabilidad marginal de la clase de la membresia en el tiempo de inicio $t=1$, ${ \delta  }_{ { c }_{ 1 } }$ es estimada; las probabilidades marginales de la clase de membres\'{i}a en el tiempo $t(\geqslant 2)$ no son estimadas directamente sin embargo, est\'{a}n en funci\'{o}n de otros par\'{a}metros. La prevalencia marginal de cada clase en el tiempo $t(\geqslant 2)$ es calculado mediante: 
+	
+	\begin{equation}
+		\delta_{c_{t}}^{(t)}=P\left[C_{t}=c_{t}\right]=\sum_{c_{1}=1}^{C} \cdots \sum_{c_{t-1}=1}^{C} \delta_{c_{1}} \prod_{j=2}^{J} \tau_{c_{t} | c_{t-1}}^{(t)}. \label{3.12}     
+	\end{equation}
+	
+	Entonces la función de verosimilitud para un individuo o distribución conjunta incondicional de su respuesta es:
+	
+	\begin{equation}
+		P\left[\mathbf{Y}_{1}=\mathbf{y}_{1}, \ldots, \mathbf{Y}_{T}=\mathbf{y}_{T}\right]=\sum_{c_{1}=1}^{C} \cdots \sum_{c_{T}=1}^{C} \left[ { \delta  }_{ c1 }\prod _{ t=2 }^{ T }{ { \tau  }_{ { c }_{ t }|{ c }_{ t-1 } }^{ (t) } }  \right] \times \left[ \prod _{ t=1 }^{ T }{ \prod _{ j=1 }^{ J }{ \prod _{ r_{j}=1 }^{ { R }_{ j } }{ { \rho  }_{ j,r_{j},t|{ c }_{ t } }^{ I({ y }_{ j,t }=r_{j,t}) } }  }  }  \right] \label{3.13}
+	\end{equation}
+	
+	Por simplicidad consideremos en este trabajo una muestra de $n$ individuos quienes responden a $J$ items binarios medidos en dos per\'{i}odos de tiempo. Consideremos aqui el modelo restringido de transici\'{o}n de clases latentes donde las probabilidades de respuesta al item son ajustadas para ser iguales durante el tiempo, aunque una extensi\'{o}n del modelo LTA sin restricciones es sencilla. En nuestro caso la funci\'{o}n de verosimilitud en (3.12) se reduce a:
+	
+	\begin{equation}
+		P\left[\mathbf{Y}_{1}=\mathbf{y}_{1}, \mathbf{Y}_{2}=\mathbf{y}_{2}\right]=\sum _{ {c}_{1}=1 }^{C}{\sum _{ {c}_{2}=1 }^{C}{\delta _{c_1} \tau_{c_2|c_1} }}\prod _{ t=1 }^{ 2 }{  \prod_{ j=1 }^{J}{\prod_{ r_{j}=1 }^{2}{\rho_{j,r_{j}|c_t}^{I(y_{j,t}=r_{j,t})}}}},\label{3.14}
+	\end{equation}
+donde $\tau_{c_{2} | c_{1}}=P\left[C_{2}=c_{2} | C_{1}=c_{1}\right]$. 
+	En (3.13), los par\'{a}metros libres son $\theta=\left(\delta, \tau_{1}, \dots, \tau_{C}, \rho_{1}, \dots, \rho_{C}\right)$ , donde $\delta=\left(\delta_{1}, \ldots, \delta_{C-1}\right), \tau_{c}=\left(\tau_{1 | c}, \ldots, \tau_{C-1 | C}\right)$ y $\boldsymbol{\rho}_{c}=\left(\rho_{11} | c, \cdots, \rho_{J 1 | c}\right)$ para $c=1, \dots, C$
+	
+	Bajo condiciones normales, los estimadores de m\'{a}xima verosimilitud para $\theta$ resuelven la funci\'{o}n score, $\partial \log \prod P\left[\mathbf{y}_{1}, \mathbf{y}_{2}\right] / \partial \theta=0$. Al igual que muchas mezclas finitas, los estimadores de m\'{a}xima verosimilitud para el LTA pueden ser estimados usando un algoritmo de optimización.
+	
+	La función de verosimilitud será maximizada usando el algoritmo EM (Esperanza-Maximización). El software Mplus (version 7) de (Muthen y Muthen, 2017) será usado para implementar la estimación del modelo LTA-DINA.	
+	
+	
+	Para el paso E de esperanza, calculamos la probabilidad condicional de que cada individuo es miembro de la clase ${ c }_{ 1 }$ en el tiempo $t=1$ y de la clase ${ c }_{ 2 }$ en el tiempo $t=2$ dadas las respuestas al item $\mathbf{y}=$ $\left(\mathbf{y}_{1}, \mathbf{y}_{2}\right)$ y de las estimaciones actuales $\hat{\theta}$ para los par\'{a}metros,
+	
+	\begin{equation}
+		\hat{\eta}{\left(c_{1}, c_{2}\right)}=P\left[C_{1}=c_{1}, C_{2}= c_{2} | \mathbf{y}_{1}, \mathbf{y}_{2}\right]=\frac { \delta _{ c_{ 1 } }\tau_{c_2|c_1}\prod _{ t } \prod _{ j } \prod _{ r_{j} } \rho_{j,r_{j} | c_{t}}^{I\left(y_{j,t}=r_{j,t}\right)} } { \sum _{ c_{ 1 } } \sum _{ c_{ 2 } } \delta _{ c_{ 1 } }\tau _{c_2|c_1}\prod _{ t } \prod _{ j } \prod _{ r_{j} } \rho_{j,r_{j} | c_{t}}^{I\left(y_{j,t}=r_{j,t}\right)}}. \label{3.15}   
+	\end{equation}
+	
+	En el paso M de maximizaci\'{o}n, actualizamos las estimaciones de los par\'{a}metros por
+	
+	\begin{equation}
+		\hat{\delta}_{c_{1}}=\frac{\hat{n}_{c_{1}}^{(1)}}{n}, \quad \hat{\tau}_{c_{2} | c_{1}}=\frac{\hat{n}_{\left(c_{1}, c_{2}\right)}}{\hat{n}_{c_{1}}^{(1)}}, \quad \hat{\rho_{}}_{j,r_{j}| c}=\frac{\hat{n}_{j,r_{j} | c}^{(1)}+\hat{n}_{j,r_{j} | c}^{(2)}}{\hat{n}_{c}^{(1)}+\hat{n}_{c}^{(2)}} , \label{3.16}
+	\end{equation}
+	
+	donde:
+	\begin{align}
+		\hat{n}_{\left( c_{1}, c_{2} \right)} & = \sum_{j} \hat{\eta}_{ j\left(c_{1}, c_{2}\right)},   \hat{n}_{c_{1}}^{(1)} = \sum_{c_{2}} \hat{n}_{\left(c_{1},  c_{2}\right)},  \hat{n}_{c_{2}}^{(2)} = \sum_{c_{1}} \hat{n}_{ \left( c_{1}, c_{2} \right)} \nonumber \\
+		\hat{n}_{j,r_{j} \vert c}^{(1)} & = \sum_{c_{2}} \sum_{j} I\left( y_{j,1} = r_{j} \right) \hat{\eta}_{ \left( c, c_{2} \right) }, \mbox{ y } \hat{n}_{j,r_{j} \vert c }^{(2)}=\sum_{c_{1}} \sum_{j} I\left(y_{j,2}=r_{j}\right) \hat{\eta}_{j\left(c_{1}, c\right)} \nonumber.
+	\end{align} 
+	
+	La iteraci\'{o}n entre estos dos pasos produce una secuencia de par\'{a}metros estimados que convergen confiablemente a un m\'{a}ximo local o global de la funci\'{o}n de verosimilitud.
+	Los desafios para la inferencia de m\'{a}xima verosimilitud en muestras peque\~{n}as para el modelo de transici\'{o}n de clases cognitivas se encuentran principalmente debido a los par\'{a}metros que han de ser estimados en los l\'{i}mites de un espacio param\'{e}trico(es decir, 0 o 1), lo que dificulta la obtenci\'{o}n adecuada de los errores est\'{a}ndar.
+	Aunque las probabilidades de respuesta al item son cercanas a cero o a uno, \'{e}stas son altamente deseables desde una perspectiva de medici\'{o}n, cuando algunos de estos par\'{a}metros son estimados en el l\'{i}mite, es imposible obtener los errores est\'{a}ndar para la inversa de la matriz hessiana. 
+
+El LTA-DINA es ajustado para los datos de la prueba FOC usando el paquete Mplus. Los fueron estimados con 15 puntos de integración, con un criterio de convergencia igual a $10^{-7}$ para el cambio absoluto en la log-verosimilitud y el numero máximo de iteraciones del EM fué de 100, utilizandose además la descomposición de Cholesky y una cuadratura adaptativa con un tipo de integración estándar y modelo de mixtura con el link logit.  	     
+	
+	
+	%%-------------------------------------------------------------------------
+	\section{Inferencia del modelo}
+	A pesar de que las estimaciones por EM y MCMC han hecho al modelo LTA muy popular, la funci\'{o}n de verosimilitud para el modelo LTA puede tener caracter\'{i}sticas inusuales las cuales pueden afectar seriamente la inferencia. Por ejemplo, puede haber ciertas regiones continuas del espacio de par\'{a}metros para los cuales la log verosimilitud  es constante, lo que conduce a la indeterminaci\'{o}n de algunos par\'{a}metros. Para modelos LTA de dos clases se supone que la prevalencia de la clase $1$ es cero en el tiempo $1$ pero luego la clase $1$ emerge al tiempo $2$ 
+	$(\delta_{1}=0 \text { y } \sum_{l_{1}} \delta_{l_{1}} \tau_{1 | l_{1}}>0)$.
+	
+	
+	%%-------------------------------------------------------------------------
+	\section{Criterios para la selecci\'{o}n del modelo}
+	Varios estadisticos de ajuste relativos est\'{a}n disponibles para comparar dos o m\'{a}s modelos. En general, los indices de Criterio de informaci\'{o}n o estadisticos de prueba LR pueden ser usados dentro del contexto del modelamiento de variables latentes. El primero es apropiado para comparar modelos anidados o no anidados, mientras que el otro solo puede ser utilizado para modelos anidados.
+	En este estudio nos basamos en los indices de criterio de informaci\'{o}n, especificamente en el AIC y BIC. A menudo m\'{u}ltiples indices se usan para comparar el ajuste de los datos al modelo entre un conjunto de modelos para los mismos datos cuando los estimadores de m\'{a}xima verosimilitud de los par\'{a}metros se han obtenido.
+	Los indices de Criterio de informaci\'{o}n est\'{a}n basados en una forma de penalizaci\'{o}n de la funci\'{o}n de verosimilitud. Valores peque\~{n}os de estos indices indican un mejor ajuste. Sin embargo, diferentes indices podri\'{a}n seleccionar diferentes modelos de ajuste para los mismos datos debido a las diferencias en la funci\'{o}n de penalizaci\'{o}n aplicada a la verosimilitud. El indice AIC est\'{a} dado por:
+	
+	\begin{equation}
+		\mathrm{AIC}=-2 \log L+2 p 
+		\label{3.17}
+	\end{equation}
+	
+	donde $p$ es el n\'{u}mero de par\'{a}metros estimados y $2p$ es usada como una penalizaci\'{o}n para la sobreparametrizaci\'{o}n y $L$ es la funci\'{o}n de verosimilitud. Para los modelos de diagn\'{o}stico cognitivo, $L$ representa el valor de la funci\'{o}n de verosimilutud marginal del modelo, y $p$ comprende el n\'{u}mero total de los par\'{a}metros de los itemes y los par\'{a}metros estructurales. Uno de los problemas con el AIC es que tiende a seleccionar modelos m\'{a}s complejos. La falta de penalizaci\'{o}n para el tama\~{n}o de muestra conduce a la inconsistencia en el desempe\~{n}o o actuaci\'{o}n del AIC y una tendencia a sobreestimar el correcto n\'{u}mero de clases(McLachlan \& Peel, 2000).
+	Sin embargo, el AIC es correcto y efciente asint\'{o}ticamente, si el verdadero modelo no est\'{a} entre los modelos que se comparan. (Vrieze, 2012). 
+	Para tener en cuenta el tama\~{n}o de la muestra, el BIC puede ser usado y viene dado por:         
+	
+	\begin{equation}
+		\mathrm{BIC}=-2 \log L+p \ln (N)
+		\label{3.18}
+	\end{equation}
+	
+	donde L es la verosimilitud del modelo estimado con $p$ par\'{a}metros libres y $ln(N)$ es la funci\'{o}n logaritmo del tama\~{n}o de muestra total $N$. Como podemos observar en la ecuaci\'{o}n 3.18, la funci\'{o}n de penalizaci\'{o}n para el BIC est\'{a} basada en el n\'{u}mero de par\'{a}metros estimados asi como tambi\'{e}n en el tama\~{n}o de muestra. El BIC tiende a aplicar mayor penalizaci\'{o}n a la funci\'{o}n de verosimilitud que el AIC cuando modelos complejos son estimados. Como consecuencia, el BIC es m\'{a}s preferido a la hora de seleccionar modelos simples que el AIC debido a la inclusi\'{o}n del tama\~{n}o de muestra en la funci\'{o}n de penalizaci\'{o}n. La penalizaci\'{o}n del BIC con $N$ hace de la significaci\'{o}n estadistica m\'{a}s y m\'{a}s dificil de lograr a su vez que el tama\~{n}o de muestra aumenta(Vrieze, 2012, p. 233).
+	Como sabemos, a diferencia del AIC, el BIC est\'{a} hecho para ser asint\'{o}ticamente consistente(Shao, 1997), lo que significa que a medida que el tama\~{n}o de muestra aumenta, el BIC tiende a seleccionar el n\'{u}mero correcto de clases mixtas consistentemente si el verdadero modelo est\'{a} entre los modelos que son comparados. Por el contrario, a medida que el tama\~{n}o de muestra aumenta, el AIC tiende a seleccionar un modelo m\'{a}s complejo aun cuando el verdadero modelo est\'{e} dentro de los candidatos. Un estudio de Shao acerca de la selecci\'{o}n de indices de modelos, muestra que la utilidad del AIC y el BIC dependen b\'{a}sicamente de la estructura del modelo. El BIC se espera que actue mejor cuando el modelo verdadero tiene una estructura simple, y el AIC se espera que actue mejor cuando el modelo verdadero tiene una estructura compleja.
+	Adicionalmente, con respecto al modelo verdadero, la utilidad del AIC y el BIC podr\'{i}a depender de varios factores, incluyendo a la funci\'{o}n de p\'{e}rdida, al estudio del dise\~{n}o y la pregunta de investigaci\'{o}n. En modelos de mixtura de variables latentes, la complejidad del modelo verdadero, la separaci\'{o}n de las clases y la proporci\'{o}n de las clases han sido demostradas que afectan la utilidad de estos dos indices de ajuste (Lubke \& Neale, 2006;
+	Nylund et al., 2007; Vrieze, 2012). Como mencionamos anteriormente, el BIC actua mejor que el AIC dentro del contexto de modelos de variables latentes.(Jedidi et al., 1997; Li et al., 2009; Nylund et al.,
+	2007; Preinerstorfer \& Formann, 2012).                   
+	
+	
+	
+	
+	

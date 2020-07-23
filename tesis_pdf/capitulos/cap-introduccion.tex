@@ -1,0 +1,56 @@
+% ------------------------------------------------------------------------- 
+\chapter[Introducción]{Introducción} \label{cap:introduccion}
+	
+	\section{Consideraciones Preliminares} \label{sec:consideraciones}
+	
+		Los modelos de diagn\'{o}stico cognitivo (CDM) son modelos de clases latentes que se utilizan para clasificar a los encuestados en grupos homog\'{e}neos basados en m\'{u}ltiples variables latentes categ\'{o}ricas que representan a los atributos cognitivos medidos en una prueba. Uno de los modelos m\'{a}s populares de esta gran familia es el llamado modelo DINA, el cual tuvo su primera aparici\'{o}n con los trabajos de Haertel (1989) enfocados principalmente en el campo educacional. Este modelo considera respuestas observadas dicot\'{o}micas de parte de los examinados, variables predictoras latentes dicot\'{o}micas y tiene como restricci\'{o}n que los examinados deben de dominar obligatoriamente todas las habilidades requeridas para correctamente responder cada item, aquellas que se resumen en una matriz denominada Q. Asimismo, este modelo estima par\'{a}metros para los items, los cuales son denominados par\'{a}metros de ruido (estimaci\'{o}n de dos probabilidades de error): Adivinaci\'{o}n y Desliz, el primero es la probabilidad de responder correctamente a un item $j$ a pesar de no dominar las habilidades requeridas para hacerlo, mientras que el segundo es la probabilidad de fallar a un item a pesar de dominar las habilidades requeridas para hacerlo; adem\'{a}s el modelo DINA se encuentra clasificado como un modelo no compensatorio conjuntivo. Es no compensatorio porque requiere que cada una de las habilidades est\'{e} presente para producir una respuesta correcta al \'{i}tem (dicot\'{o}mico o polit\'{o}mico) y es conjuntivo cuando todas las habilidades requeridas para responder un \'{i}tem, necesariamente tienen que ser dominadas por el individuo para obtener la respuesta correcta.\\           
+		
+		En este proyecto se busca estudiar c\'{o}mo esta clasificaci\'{o}n pudiera verse afectada en el tiempo, cuando es factible el aplicar la prueba en repetidas ocasiones. 
+		\setlength{\parskip}{6mm}
+		
+		Para ello, algunos autores como Kaya and Leite [2017] han propuesto un modelo que combina el modelo de an\'{a}lisis de transici\'{o}n de clases latentes (LTA) y los CDMs. De manera similar Li, F. et.al. [2016] han utilizado el LTA para proponer una metodolog\'{i}a de transici\'{o}n de clases con el modelo DINA, donde la estimaci\'{o}n de su modelo lo realizan usando m\'{e}todos bayesianos, a diferencia de los primeros autores que utilizaron el paquete Mplus implementado para analizar CDMs longitudinales junto con estudios de simulaci\'{o}n de Montecarlo. El objetivo de esta investigaci\'{o}n es analizar estas propuestas u otras relacionadas al problema e implementar la estimaci\'{o}n de sus par\'{a}metros. Se ilustrar\'{a} tambi\'{e}n todo ello con una aplicaci\'{o}n real y se espera que puedan realizarse, de ser posible, algunas variantes o extensiones del modelo para lidiar con las restricciones que tienen estos modelos, sobre todo en lo concerniente a la replicabilidad de la prueba original.
+		
+		Usualmente cuando queremos analizar datos longitudinales las preguntas de investigaci\'{o}n est\'{a}n en relaci\'{o}n al cambio a trav\'{e}s del tiempo, tal cambio, en nuestro modelo estar\'{a} referido a cambios en las clases cognitivas latentes de los individuos.
+		
+		El an\'{a}lisis de transici\'{o}n de clases latentes (LTA) es una aplicaci\'{o}n longitudinal del modelo de an\'{a}lisis de clases latentes, que tiene por objetivo identificar si existe un cambio entre las clases latentes a trav\'{e}s del tiempo (Collins y Lanza, 2010). Mientras que el an\'{a}lisis de clases latentes es aplicado a un conjunto de variables recolectadas en un tiempo espec\'{i}fico para identificar las clases latentes que presentan los patrones de respuesta en los datos, el an\'{a}lisis de transici\'{o}n de clases latentes es aplicado a mediciones repetidas en el tiempo para estudiar el movimiento entre las clases latentes identificadas (Collins y Lanza, 2010).
+		
+		El LTA fue desarrollado inicialmente para estudiar el cambio secuencial por etapas de un tipo de variables latentes llamadas variables latentes din\'{a}micas (Collins and Wugalter, 1992). Las variables latentes din\'{a}micas incluyen caracter\'{i}sticas tales como actitudes y patrones de personalidad que cambian a trav\'{e}s del tiempo. La t\'{e}cnica ha sido, posteriormente utilizada para el estudio sobre las intervenciones como por ejemplo el abandono del consumo de tabaco y la disminuci\'{o}n de malas conductas (comportamiento inapropiado). El an\'{a}lisis de transici\'{o}n latente es un m\'{e}todo muy usado para investigar el crecimiento acad\'{e}mico cuando las variables latentes son categ\'{o}ricas (Boscardin et al., 2008; Compton et al., 2008; Trentacosta et al., 2011) 
+		
+		En esta investigaci\'{o}n, describiremos el uso del LTA en combinaci\'{o}n con un modelo de diagn\'{o}stico cognitivo para analizar pruebas educativas largas que miden habilidades cognitivas m\'{u}ltiples. Esta nueva clase de modelos  que los llamamos de transici\'{o}n de clases latentes cognitivas (LTCA) permiten investigar hip\'{o}tesis acerca del efecto de una intervenci\'{o}n (por ejemplo, un programa instruccional o un cambio en la pol\'{i}tica educativa) mediante el cambio en las probabilidades de transici\'{o}n antes y despu\'{e}s de una intervenci\'{o}n con relaci\'{o}n al estado cognitivo.
+		
+		En este nuevo modelo se usan datos longitudinales para investigar si alg\'{u}n cambio ha ocurrido entre los estados latentes a trav\'{e}s del tiempo. Las transiciones son expresadas junto con sus probabilidades de cambio de un estado latente a otro. 
+		
+		El LTCA presenta varias razones para su uso: primero, que estos modelos pueden representar variables latentes multidimensionales, segundo pueden modelar y predecir el cambio a trav\'{e}s del tiempo, el cual es en cierto sentido discreto y tercero nos permiten conocer si algunos estados latentes pueden tener prevalencias muy bajas en etapas iniciales, pero a medida que los individuos hacen la transici\'{o}n en el tiempo, su prevalencia aumenta (Collins y Lanza, 2010). 
+		
+		Este nuevo modelo, entonces permitir\'{a} a un investigador responder directamente a un conjunto de preguntas tales como: ?`Existe alg\'{u}n cambio entre las clases latentes a trav\'{e}s del tiempo? y si la respuesta es positiva explicar ?`c\'{o}mo caracterizar dicho cambio a trav\'{e}s de las probabilidades?
+		
+		As\'{i}, como en el an\'{a}lisis de clases latentes, en este nuevo modelo se estiman tambi\'{e}n las probabilidades de respuesta al item, pero adem\'{a}s la prevalencia en las clases latentes que se entiende como el n\'{u}mero de casos de un evento en una poblaci\'{o}n en un momento dado y la incidencia de las transiciones entre las clases latentes junto con una medida del error.   
+		
+		Tres grupos de par\'{a}metros son estimados en un modelo LTCA. El primer grupo de par\'{a}metros est\'{a} compuesto por las probabilidades de transici\'{o}n entre las clases latentes. Estas son particularmente importantes porque ofrecen la soluci\'{o}n a la mayor\'{i}a de preguntas del tipo: ?`C\'{o}mo cambian los estados de dominio de las habilidades cognitivas latentes de etapa en etapa? El segundo grupo de par\'{a}metros estima el dominio o no de las digamos $C$ distintas habilidades cognitivas por parte de cada estudiante en su primera medici\'{o}n o etapa. El tercer grupo de par\'{a}metros estima la relaci\'{o}n entre el estado latente y la pregunta. Esto es, produce una probabilidad de respuesta correcta o incorrecta para cada item dado el dominio de los diferentes estados latentes.
+		
+		El segundo y el tercer grupo de par\'{a}metros proporcionan tambi\'{e}n la soluci\'{o}n a otra pregunta de investigaci\'{o}n: ?`Cu\'{a}l es el estado de dominio individual en cada habilidad cognitiva en cada etapa u ocasi\'{o}n? La respuesta a esta pregunta proporciona informaci\'{o}n \'{u}til para el estado del estudiante o paciente en cada punto en el tiempo.
+		
+		%% ------------------------------------------------------------------------- %%
+		\section{Objetivos} \label{sec:objetivo}
+		
+		El objetivo general de la tesis es estudiar un nuevo modelo de transici\'{o}n de clases latentes de habilidades cognitivas para datos longitudinales, as\'{i} como observar su aplicaci\'{o}n a un conjunto de datos reales. De manera espec\'{i}fica:
+		
+		\begin{itemize}
+			\item Revisar la literatura acerca del an\'{a}lisis de transici\'{o}n latente 
+			\item Presentar los fundamentos y propiedades de los modelos de transici\'{o}n de clases latentes (LTA), los modelos de an\'{a}lisis de clases latentes (LCA) y los modelos de diagn\'{o}stico cognitivo (MDCs)
+			\item Estudiar puntualmente el nuevo modelo de transici\'{o}n latente.
+			\item Estudiar el proceso de estimaci\'{o}n de par\'{a}metros en los modelos de transici\'{o}n latentes bajo el enfoque cl\'{a}sico o frecuentista
+			\item Realizar un estudio de simulaci\'{o}n a efectos de comparar la estimaci\'{o}n obtenida
+			\item Aplicar el modelo a un conjunto de datos longitudinales  en el \'{a}rea educativa que involucren alg\'{u}n o algunos tipos de tareas cognitivas.
+		\end{itemize}
+		
+		
+		%% ------------------------------------------------------------------------- %%
+		\section{Organizaci\'{o}n del Trabajo} \label{sec:organizacion}
+		
+		Para alcanzar los objetivos de la investigaci\'{o}n se considera la organizaci\'{o}n siguiente:
+		
+		En el Cap\'{i}tulo \ref{cap:introduccion} se presenta consideraciones generales acerca de los principales modelos de diagn\'{o}stico cognitivo entre los que destacan el modelo DINA, el modelo G-DINA y a su vez se estudia la literatura acerca del an\'{a}lisis de transici\'{o}n latente (LTA) y las cadenas de M\'{a}rkov. En el Cap\'{i}tulo \ref{cap:modelo} se estudia el modelo de transici\'{o}n de clases latentes cognitivas, la estimaci\'{o}n de sus par\'{a}metros y su implementaci\'{o}n computacional. En el capitulo \ref{cap:simulacion} se presentan los resultados de la aplicaci\'{o}n del modelo a un conjunto de datos longitudinales en el \'{a}rea educativa orientados a conocer alg\'{u}n o algunos tipos de tareas cognitivas. En el capitulo \ref{cap:aplicacion} se presentan algunas conclusiones, recomendaciones y sugerencias para futuras investigaciones que se podrian derivar de este trabajo. Se incluir\'{a} finalmente en anexos c\'{o}digo en R para la estimaci\'{o}n de los par\'{a}metros.
+		
+		
+		

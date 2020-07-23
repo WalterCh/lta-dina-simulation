@@ -1,0 +1,302 @@
+%---------------------------------------------------- 
+\chapter{Estudio de Simulaci\'{o}n}
+\label{cap:simulacion}
+
+En este cap\'{i}tulo presentaremos un ejemplo simulado de la aplicaci\'{o}n LTA-DINA. Con el \'{u}ltimo modelo como modelo de medici\'{o}n para evaluar el cambio posterior a una intervenci\'{o}n instruccional educativa. El estudio se basa en un experimento dise\~{n}ado multi et\'{a}pico para evaluar los efectos del tratamiento denominado EAI (instrucci\'{o}n anclada mejorada) en el rendimiento en matem\'{a}ticas en escuelas primarias con alumnos que presentan dificultades de aprendizaje y con aquellos que no la presentan.
+Hubieron dos etapas. Una primera aplicaci\'{o}n se realiz\'{o} en el primer semestre acad\'{e}mico seguida de una segunda aplicaci\'{o}n en el mismo a\~{n}o acad\'{e}mico. Los resultados para la segunda evaluaci\'{o}n del FOC (Fraction of the Cost) se presentar\'{a}n en esta simulaci\'{o}n. El impacto de la intervenci\'{o}n EAI en los estudiantes de matem\'{a}tica fu\'{e} examinada al evaluar las diferentes probabilidades de transici\'{o}n seguidas de cada una de las dos aplicaciones instruccionales y evaluando tambi\'{e}n las diferentes probabilidades de transici\'{o}n  entre los diferentes grupos de examinados. 
+
+\noindent
+\textbf{Generaci\'{o}n de los datos y dise\~{n}o del estudio}\\
+Los estudiantes para este estudio fueron seleccionados de seis salones de matem\'{a}ticas en cierto colegio de una provincia. La muestra consistir\'{a} de 50 varones y 59 mujeres, todos ellos en el s\'{e}timo grado. Nueve de los estudiantes fueron tratados con dificultades de aprendizaje mientras que el resto no presentan estas dificultades.
+La prueba FOC fue aplicada cuatro veces, en las semanas 1, 4, 19 y 24 del a\~{n}o acad\'{e}mico. Dos tratamientos instructivos fueron administrados a estos mismos estudiantes durante el a\~{n}o escolar. En el treceavo el instructivo EAI, denominado KK fu\'{e} ense\~{n}ado entre las semanas 1 y 4 y en el onceavo dia el instructivo EAI llamado FOC fu\'{e} aplicado entre las semanas 19 y 24.\\
+Entre la aplicaci\'{o}n de estos 2 instructivos, los profesores siguieron su desarrollo regular del s\'{i}labo de matem\'{a}ticas. Cuatro aplicaciones de la prueba FOC fueron realizadas. No hubo en los  estudiantes retroalimentaci\'{o}n en cuanto a las respuestas correctas acerca de su evaluaci\'{o}n con el fin de evitar los efectos posibles de memoria. As\'{i}, los resultados de este estudio demuestran que la estrategia fue exitosa.\\
+
+\noindent
+\textbf{Mediciones}\\
+La prueba de FOC contiene 20 items de preguntas y respuestas cortas dise\~{n}adas para evaluar los efectos del instructivo FOC. Los \'{i}tems fueron computados dicot\'{o}micamente como correctos e incorrectos. La prueba fue aplicada en cada uno de los cuatro tiempos. Los items en el test fueron construidos para medir la capacidad de los estudiantes para realizar diagramas esquem\'{a}ticos, realizar mediciones, procesar longitudes y determinar costos en la construcci\'{o}n de una rampa para patinadores. La confiabilidad del test fu\'{e} de 0.80. La confiabilidad basada en las cuatro aplicaciones de este estudio fu\'{e} de 0.78, 0.79, 0.79, 0.78 respectivamente.
+
+\noindent
+\textbf{Construcci\'{o}n de la Matriz Q}\\
+Este paso es muy importante para modelar el diagn\'{o}stico cognitivo y una mala especificaci\'{o}n nos dar\'{a} resultados err\'{o}neos. Para la prueba FOC, fueron medidas 4 habilidades cognitivas: N\'{u}mero y Operaciones, Medici\'{o}n, Resoluci\'{o}n de problemas y Representaci\'{o}n. Un experto en la competencia de educaci\'{o}n matem\'{a}tica identific\'{o} las 4 habilidades e indic\'{o} cuales de estas cuatro habilidades fueron medidas por cada uno de los \'{i}tems en la prueba FOC. Los resultados de este an\'{a}lisis fueron usados para cosntruir la matriz $Q$ con elementos $q_{j k}$ que indica si la habilidad $k$ es necesaria para resolver el \'{i}tem $j$.\\
+
+
+\begin{table}[H]
+	\centering
+	\caption{Matriz Q para el test de FOC}
+	\vspace{3mm}
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\textbf{Items} & \textbf{N\'{u}meros y Operaciones} & \textbf{Medici\'{o}n} & \multicolumn{1}{l|}{\textbf{Soluci\'{o}n de Problemas}} & \multicolumn{1}{l|}{\textbf{Representaci\'{o}n}} \\
+			\hline
+			1 	 & 1	 & 0 	& 0	 & 0 \\ \hline
+			2 	 & 1	 & 0 	& 0	 & 0 \\ \hline
+			3 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			4 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			5 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			6 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			7 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			8 	 & 1	 & 1 	& 0	 & 0 \\ \hline
+			9 	 & 0	 & 1 	& 0	 & 1 \\ \hline
+			10	 & 0	 & 1 	& 0	 & 1 \\ \hline
+			11	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			12	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			13	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			14	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			15	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			16	 & 0	 & 0 	& 1	 & 0 \\ \hline
+			17	 & 1	 & 1 	& 1	 & 1 \\ \hline
+			18	 & 0	 & 1 	& 0	 & 1 \\ \hline
+			19	 & 1	 & 0 	& 0	 & 1 \\ \hline
+			20	 & 1	 & 0 	& 0	 & 0 \\ \hline
+		\end{tabular}
+	}
+	
+\end{table}
+
+\noindent
+\textbf{Preguntas de investigaci\'{o}n e hip\'{o}tesis de investigaci\'{o}n basadas en modelos}\\
+Describiremos un marco de referencia de hip\'{o}tesis de tal manera que nos permita determinar:(1)si el estado de la habilidad dominada cambiaron a trav\'{e}s de las 4 administraciones de la prueba y si estos cambios subsecuentes a cada intervenci\'{o}n fueron iguales o diferentes. (2) si los diferentes grupos de evaluados tienen diferentes probabilidades de transici\'{o}n. Empezamos asumiendo que las cuatro habilidades son independientes y que el crecimiento en la habilidad es tambi\'{e}n independiente. M\'{a}s adelante asumimos que las probabilidades de transici\'{o}n son diferentes para cada habilidad.
+Con respecto a la pregunta 1 hacemos una comparaci\'{o}n b\'{a}sica asumiendo una poblaci\'{o}n homog\'{e}nea con respecto a la matriz de probabilidades de transici\'{o}n.
+
+
+
+\begin{table}[H]
+	\centering
+	\caption{Matriz de transiciones de probabilidad para dos categorias de clases latentes con cuatro puntos en el tiempo}
+	\begin{tabular}{lll}
+		Test Wave 1 $\rightarrow$ & Test Wave 2 $\rightarrow$ & Test Wave 3 $\rightarrow$ \\
+		Test Wave 2 & Test Wave 3 & Test Wave 4 \\ 
+		\hline  
+		(KK instruction) & Regular instruction & (FOC instruction) \\ 
+		\hline 
+		$p_{n | n}^{21} p_{m | n }^{21}$ & $p_{n | n}^{32} p_{m | n }^{32}$ & $p_{n | n}^{43} p_{m | n}^{43}$ \\
+		$p_{n | m}^{21} p_{m | m }^{21}$ & $p_{n | m}^{32} p_{m | m }^{32}$ & $p_{n | m}^{43} p_{m | m}^{43}$
+	\end{tabular}
+\end{table}
+ 
+En la tabla anterior $m$ indica logro y $n$ indica no logrado con relaci\'{o}n a la competencia. Como ejemplo consideremos la transici\'{o}n de la primera a la segunda prueba (es decir, el antes y despu\'{e}s en el aplicativo KK). La matriz de probabilidad de transici\'{o}n esta compuesta por cuatro componentes: $p_{n | n}^{21}$ (los que permanecen en el estado de no logrado), $p_{m | m}^{21}$ (los que permanecen en el estado de logrado), $p_{m | n}^{21}$ (los que pasan o transicionan de un estado de logro a un estado no logrado), $p_{n | m}^{21}$ (los que pasan o transicionan de un estado de no logrado a un estado de logrado) 
+Las filas de cada matriz de transici\'{o}n son probabilidades condicionales y deben sumar 1, es por eso que para cada matriz de transici\'{o}n, solo se necesitan estimar dos probabilidaes de transici\'{o}n.\\
+Tres matrices de probabilidades de transici\'{o}n se construir\'{a}n para observar los efectos del evaluativo KK (Etapa 1 a la Etapa 2), instrucci\'{o}n regular (Etapa 2 a la Etapa 3) y la instrucci\'{o}n del FOC (Etapa 3 a la Etapa 4). Cuatro modelos diferentes de estas tres probabilidades de transici\'{o}n fueron probadas para determinar si los efectos en los tres instructivos diferentes fueron aproximadamente iguales o no.\\
+
+\noindent
+\textbf{Modelo A}\\
+En este modelo, la matriz de probabilidades de transici\'{o}n para cada etapa se asume diferentes que las otras, de este modo indicamos que los efectos de todos los tres instructivos son diferentes.
+
+$$\left|\begin{array}
+{cc}{p_{n | n}^{21}} & {p_{m | n}^{21}} \\ {p_{n | m}^{21}} & {p_{m | m}^{21}}\end{array}\right| \neq\left|\begin{array}{cc}{p_{n | n}^{32}} & {p_{m | n}^{32}} \\ {p_{n | m}^{32}} & {p_{m | m}^{32}}\end{array}\right| \neq\left|\begin{array}{cc}{p_{n | n}^{43}} & {p_{m | n}^{43}} \\ {p_{n | m}^{43}} & {p_{m | m}^{43}}\end{array}\right|$$
+
+\noindent
+\textbf{Modelo B}\\
+En este modelo, las dos matrices de probabilidades de transici\'{o}n previas al aplicativo FOC se asumen iguales. La transici\'{o}n seguida al FOC, sin embargo se asume que debe ser diferente. Es decir, los efectos del instructivo KK y la aplicaci\'{o}n del instructivo de matem\'{a}tica se asumen iguales, pero ambos difieren del efecto del instructivo FOC.\\
+
+$$\left|\begin{array}
+{cc}{p_{n | n}^{21}} & {p_{m | n}^{21}} \\ {p_{n | m}^{21}} & {p_{m | m}^{21}}\end{array}\right|=\left|\begin{array}{cc}{p_{n | n}^{32}} & {p_{m | n}^{32}} \\ {p_{n | m}^{32}} & {p_{m | m}^{32}}\end{array}\right| \neq\left|\begin{array}{cc}{p_{n | n}^{43}} & {p_{m | n}^{43}} \\ {p_{n | m}^{43}} & {p_{m | m}^{43}}\end{array}\right|$$
+
+\noindent
+\textbf{Modelo C}\\
+En este modelo, la matriz de transici\'{o}n del pre al post test del instructivo KK se asume que debe ser igual a la matriz de transici\'{o}n del pre al post test del instructivo FOC, pero no as\'{i} igual que el pre-post del instructivo regular. Es decir, que los dos tratamientos instructivos EAI que son el KK y el FOC, se asumen que deben afectar a las probabilidades de transici\'{o}n en forma similar, pero ambos difieren de los efectos de la instrucci\'{o}n regular en matem\'{a}ticas.\\
+
+$$\left|\begin{array}
+{cc}{p_{n | n}^{21}} & {p_{m | n}^{21}} \\ {p_{n | m}^{21}} & {p_{m | m}^{21}}\end{array}\right|=\left|\begin{array}{cc}{p_{n | n}^{43}} & {p_{m | n}^{43}} \\ {p_{n | m}^{43}} & {p_{m | m}^{43}}\end{array}\right| \neq\left|\begin{array}{cc}{p_{n | n}^{32}} & {p_{m | n}^{32}} \\ {p_{n | m}^{32}} & {p_{m | m}^{32}}\end{array}\right|$$
+
+\noindent
+\textbf{Modelo D}\\
+En este modelo, todas las matrices de probabilidades de transici\'{o}n se asumen iguales, es decir, todos los evaluativos instruccionales se asumen que deben tener el mismo efecto en los estados de dominio o logro de los estudiantes.
+
+$$\left|\begin{array}
+{cc}{p_{n | n}^{21}} & {p_{m | n}^{21}} \\ {p_{n | m}^{21}} & {p_{m | m}^{21}}\end{array}\right|=\left|\begin{array}{cc}{p_{n | n}^{32}} & {p_{m | n}^{32}} \\ {p_{n | m}^{32}} & {p_{m | m}^{32}}\end{array}\right|=\left|\begin{array}{cc}{p_{n | n}^{43}} & {p_{m | n}^{43}} \\ {p_{n | m}^{43}} & {p_{m | m}^{43}}\end{array}\right|$$
+
+Con respecto a la Pregunta 2 que es, si diferentes grupos de examinados tienen diferentes probabilidades de transici\'{o}n, la restricci\'{o}n fue eliminada en el supuesto de homogeneidad de la poblaci\'{o}n, tal que poblaciones diferentes permitieron tener diferentes matrices de probabilidades de transici\'{o}n. Los grupos m\'{a}s importantes ser\'{a}n los estudiantes con discapacidades y aquellos que no presentan estas.
+Desafortunadamente, la muestra de estudiantes con dificultades de aprendizaje fue muy peque\~{n}a $(N=9)$ lo que produce poca precisi\'{o}n en las estimaciones de las probabilidades de transici\'{o}n para ese grupo. 
+
+\noindent
+\textbf{Estimaci\'{o}n de los par\'{a}metros de los items en el Modelo DINA}\\
+En este estudio, el mismo test fue aplicado cuatro veces. Se asume que el efecto memoria no juega un rol importante, toda vez que la prueba consisti\'{o} en una evaluaci\'{o}n del desempe\~{n}o en la cual a los estudiantes se les pregunt\'{o} como realizar las mediciones, el montaje y otras labores para la construcci\'{o}n del rampa de patinaje, y considerando que los estudiantes no recibieron la retroalimentaci\'{o}n acerca de las respuestas correctas despu\'{e}s de cada aplicaci\'{o}n. Adicionalmente, se asume invarianza en los par\'{a}metros del \'{i}tem para el modelo DINAa lo largo de las 4 aplicaciones, a pesar de que las proporciones de dominio en la poblaci\'{o}n se consideran cambiables.
+Mas a\'{u}n, los par\'{a}metros de los items se fueron estimados conjuntamente a lo largo de las 4 aplicaciones. Las proporciones de dominio para cada habilidad fueron estimadas libremente a lo largo de las administraciones.\\
+El modelo basado en hip\'{o}tesis trata con probabilidades de transici\'{o}n, y como un resultado las estimaciones del par\'{a}metro de los \'{i}tems no afectan demasiado. Las estimaciones de los par\'{a}metros de los \'{i}tems para cada modelo hipot\'{e}tico fueron relativamente muy similares unos a otros.\\
+Se presentar\'{a} en el siguiente cuadro las estimaciones de los par\'{a}metros de los \'{i}tems para el Modelo A, las dos primeras columnas son las estimaciones de los prametros al item g y s respectivamente. La tercera columna proporciona estimaciones de la calidad de diagn\'{o}stico de cada \'{i}tem. Esta estimaci\'{o}n se obtiene mediante:
+
+\begin{equation}
+	\frac{\left(1-s_{j}\right) / s_{j}}{g_{j} /\left(1-g_{j}\right)}  
+	\label{4.1}
+\end{equation}           
+
+El cual es llamado el odds ratio entre responder positivamente condicionado a $\eta_{i j}=1$ y de responder positivamente condicionado a $\eta_{i j}=0$. El \'{i}tem con el m\'{a}s alto odds ratio ser\'{a} considerado el m\'{a}s valorable en t\'{e}rminos de la diferenciaci\'{o}n entre las dos clases latentes, donde las dos clases latentes se definen como una primera en la cual los examinados han dominado todas las habilidades requeridas por el \'{i}tem, es decir, $\left.\eta_{i j}=1\right)$ y una segunda en la cual los examinados no han dominado por lo menos una habilidad requerida  por ese \'{i}tem es decir,$\left.\eta_{i j}=0\right)$\\
+
+\noindent
+\textbf{M\'{e}todo}\\
+Se consider\'{o} un escenario de evaluaci\'{o}n de pre y post test en el cual se aplicaron las mismas pruebas o ex\'{a}menes en dos tiempos($T=2$). Usando los datos generados, se investig\'{o} la recuperaci\'{o}n de par\'{a}metros del modelo LTA-DINA. Particularmente usamos el modelo de diagnostico cognitivo DINA como modelo de medici\'{o}n. Se gener\'{o} respuestas de 1000 estudiantes para 20 items dise\~{n}ados para medir 4 habilidades. La matriz Q se defini\'{o} con la ayuda de expertos y est\'{a} dada en la Tabla 1. Los par\'{a}metros de adivinaci\'{o}n y desliz fueron generados aleatoriamente de una distribuci\'{o}n uniforme entre 0.1 y 0.3, y estos permanecieron constantes a trav\'{e}s del tiempo.
+
+\noindent
+Las probabilidades de transici\'{o}n, ser\'{a}n tomadas del articulo de Li.     
+El c\'{o}digo R que genera los datos est\'{a} disponible en el Anexo. El modelo fue implementado en el sofware Mplus y el c\'{o}digo tambi\'{e}n se encuentra en el anexo. El criterio de convergencia por defecto usado fue de 0.001 para el cambio absoluto en la logverosimilitud.
+
+\noindent
+\textbf{Resultados}\\
+ 
+\begin{table}[H]
+	\centering
+	\caption{Estimaciones de los par\'{a}metros al item para el modelo LTA-DINA y Odds Ratios.}
+	\begin{tabular}{lrrrr}
+		\hline
+		& \multicolumn{2}{c}{True} & \multicolumn{2}{c}{LTA-DINA}\\
+		\hline
+		& Guess & Slip & Guess & Slip\\
+		\hline
+		Item1 & $0.281$ & $0.283$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item2 & $0.128$ & $0.287$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item3 & $0.300$ & $0.157$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item4 & $0.289$ & $0.266$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item5 & $0.116$ & $0.228$ & $0.20(0.01)$ & $0.23(0.03)$\\
+		Item6 & $0.203$ & $0.204$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item7 & $0.178$ & $0.247$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item8 & $0.281$ & $0.127$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item9 & $0.189$ & $0.231$ & $0.20(0.01)$ & $0.23(0.03)$\\
+		Item10 & $0.267$ & $0.241$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item11 & $0.247$ & $0.192$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item12 & $0.262$ & $0.244$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item13 & $0.178$ & $0.287$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item14 & $0.237$ & $0.151$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item15 & $0.101$ & $0.192$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item16 & $0.266$ & $0.288$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item17 & $0.101$ & $0.296$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item18 & $0.142$ & $0.123$ & $0.20(0.01)$ & $0.23(0.03)$ \\
+		Item19 & $0.281$ & $0.195$ & $0.20(0.01)$ & $0.23(0.03)$\\
+		Item20 & $0.222$ & $0.212$ & $0.20(0.01)$ & $0.23(0.03)$\\
+		\hline
+	\end{tabular}
+\end{table}
+Esto se interpreta como que los items del FOC fueron efecivos al momento de discriminar o distinguir entre los examinados entre las dos clases latentes. Este indice además nos indica que los valores en la matriz Q identifican con certeza las habilidades necesarias para responder bien a los items en la prueba. Los valores grandes de los odds ratios, también fueron debido principalmente a los pequeños parámetros de adivinación. Esto se deduce del hecho de que todos los 20 items de las pruebas FOC fueron de respuestas cortas al item, por consiguiente, la verosimilitud de adivinación fué más baja. 
+
+\begin{table}[H]
+	\centering
+	\caption{Frecuencia y Proporción de cada habilidad dominada para cada punto en el tiempo.}
+	\begin{tabular}{lrr}
+		\hline
+		Habilidades & \multicolumn{1}{c}{Tiempo 1} & \multicolumn{1}{c}{Tiempo 2}\\
+		\hline
+		Número y Operaciones 	& $500$ ($0.500$)  & $501$ ($0.501$) \\
+		Medición 		& $513$ ($0.513$)  & $513$ ($0.513$) \\
+		Solución de problemas		& $496$ ($ 0.496$) & $487$ ($0.487$)\\
+		Representación 		& $522$ ($0.522$) & $507$ ($0.507$) \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\noindent
+\textbf{Probabilidades de dominio a través de los puntos en el tiempo}\\
+La tabla 4.4 presenta frecuencias y proporciones de las personas evaluadas que dominaron cada una de las habilidades cognitivas en cada punto en el tiempo. Las probabilidades de dominio para las 4 habilidades no han aumentado substancialmente inclusive para la habilidades de Solución de problemas y Representación ha disminuído. Es decir al parecer el primer instructivo KK no ha sido adecuado   
+
+\begin{table}[H]
+	\centering
+	\caption{Frecuencias y Proporciones de los patrones de dominio para las cuatro habilidades en cada punto en el tiempo.}
+	\begin{tabular}{lrrrr}
+		\hline
+		Pattern & \multicolumn{1}{c}{Time Point 1} & \multicolumn{1}{c}{Time Point 2} \\
+		\hline
+		$(0, 0, 0, 0)$ 	& $188$ ($0.188$) & $189$ ($0.189$) \\
+		$(0, 0, 0, 1)$  & $65$ ($0.065$) & $49$ ($0.049$) \\
+		$(0, 0, 1, 0)$  & $49$ ($0.049$) & $ 49$ ($0.049$) \\
+		$(0, 0, 1, 1)$  & $31$ ($0.031$) & $30$ ($0.030$) \\
+		$(0, 1, 0, 0)$ 	& $47$ ($0.047$) & $57$ ($0.030$) \\
+		$(0, 1, 0, 1)$  & $41$ ($0.041$) & $43$ ($0.043$) \\
+		$(0, 1, 1, 0)$  & $30$ ($0.030$) & $ 30$ ($0.030$) \\
+		$(0, 1, 1, 1)$  & $49$ ($0.049$) & $52$ ($0.052$) \\
+		$(1, 0, 0, 0)$ 	& $45$ ($0.045$) & $56$ ($0.056$) \\
+		$(1, 0, 0, 1)$  & $35$ ($0.035$) & $43$ ($0.043$) \\
+		$(1, 0, 1, 0)$  & $32$ ($0.032$) & $ 32$ ($ 0.032$)\\
+		$(1, 0, 1, 1)$  & $42$ ($0.042$) & $39$ ($0,039$) \\
+		$(1, 1, 0, 0)$  & $32$ ($0.032$) & $35$ ($0.035$)\\
+		$(1, 1, 0, 1)$  & $51$ ($0.051$) & $ 41$ ($0.041$)\\
+		$(1, 1, 1, 0)$  & $55$ ($0.055$) & $45$ ($0.045$)\\
+$(1, 1, 1, 1)$  & $208$ ($0.208$) & $210$ ($0.210$) \\
+		\hline
+	\end{tabular}
+\end{table}
+La Tabla 4.5 presenta frecuencias y probabilidades de los patrones de dominio observados en la data del FOC para cada punto en el tiempo. Un patrón que indica el dominio de las cuatro habilidades en un exámen es representado en la Tabla 4.5 como (1,1,1,1). Igualmente un patrón que indica que el examinado dominó ninguna de las cuatro habilidades es representado en la tabla como (0,0,0,0). Las 4 habilidades pueden generar $2^4$ patrones. En datos reales, sin embargo, diferentes dificultades pueden suceder ocasionando en algunos casos que algunos patrones no sean considerados u observados lo cual podria reducir este número de patrones.
+Observando los patrones podemos decir que (1,1,1,1) fue el más observado a través de las dos mediciones, pero también el patrón (0,0,0,0) se mantuvo con la misma medición en el tiempo $T=2$.     
+
+
+\noindent
+\textbf{4.1 Estudio de simulación usando los parámetros recuperados de la base de datos FOC}\\
+Para confirmar que nuestras estimaciones pueden ser verdaderas o comprobadas, se condujo un estudio de simulación usando los valores de los parámetros estimados de la base de datos FOC. Se simuló datos con las mismas caracteristicas de la data del FOC con la ayuda del software libre R. Las respuestas de 100 estudiantes a 20 items que miden 4 habilidades cognitivas fueron generadas. Se usó la matriz Q de la tabla 4.1, para los parámetros del modelo utilizamos las estimaciones puntuales obtenidas en la data del FOC. Los parámetros de adivinación y desliz fueron aleatoriamente generados a partir de una distribución de probabilidad uniforme desde 0.1 hasta 0.3 y se mantuvieron constantes a través del tiempo.
+El modelo LTA-DINA con diferentes probabilidades de transición para cada habilidad y manteniendo constantes los parámetros de adivinación y desliz se muestran en la siguiente tabla:
+
+\begin{table}[H]
+	\centering
+	\caption{Probabilidades de transición estimadas para el modelo LTA-DINA}
+	\begin{tabular}{lrrrrr}
+		\hline
+		& \multicolumn{1}{c}{$\widehat{p}_{m1}$} & 				\multicolumn{1}{c}{$\widehat{p}_{m|n}$} & 					\multicolumn{1}{c}{$\widehat{p}_{m|m}$} & 
+	\multicolumn{1}{c}{$\widehat{p}_{n|m}$} &
+	\multicolumn{1}{c}{$\widehat{p}_{n|n}$}\\
+		\hline
+		Número y Operaciones	 	& ($0.50$) & ($0.256$) &  ($0.256$) &  ($0.255$) & ($0.244$)\\
+		Medición			&  ($0.513$) &  ($0.247$) & ($0.247$) & ($0.247$) &  ($ 0.240$)\\
+		Solución de problemas		&  ($ 0.496$) &  ($0.231$) &  ($0.231$) &  ($0.240$) & ($0.273$)\\
+		Representación		&  ($0.522$) &  ($0.223$) &  ($0.223$) &  ($0.238$) &   ($0.255$)\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\noindent
+La tabla 4.6 nos presenta las probabilidades de transición para el modelo LTA-DINA. pm1 indica la probabilidad de dominio de la habilidad en el primer tiempo. pm/n es la probabilidad de transición de un estado de no dominio a un estado de dominio, pm/m es la probabilidad de transición de un estado de dominio a un estado de dominio(es decir, permanencia en el mismo estado), pn/m es la probabilidad de transición de un estado de dominio a un estado de no dominio, pn/n nos indica la probabilidad de transición de un estado de no dominio a un estado de no dominio(permanencia). El modelo además nos dice que para el primer punto en el tiempo, el $50\%$ de los evaluados han logrado el dominio de la habilidad Número y operaciones, el $51.3\%$ de los evaluados han alcanzado a dominar la habilidad de Medición, el $49.6\%$ de los evaluados ha dominado la habilidad Solución de problemas y el $52.2\%$ ha dominado la habilidad de Representación.      
+
+\noindent
+pm1 puede ser interpretado como un ratio o razón de aprendizaje, el cual puede ser utilizado como un indicador por ejemplo cuando se evalua una intervención educativa que se realiza en dos periodos en el tiempo.
+
+Además se evaluó el ajuste del modelo. La tabla 4.7 presenta la siguiente información con respecto al ajuste del modelo:  
+
+\begin{table}[H]
+	\centering
+	\caption{Información del ajuste del modelo LTA-DINA.}
+	\begin{tabular}{lrrrr}
+		\hline
+		Model & \multicolumn{1}{c}{Log-likelihood} & \multicolumn{1}{c}{Number of parameters} & \multicolumn{1}{c}{AIC} & \multicolumn{1}{c}{BIC}\\
+		\hline
+		LTA-DINA 	& $-16125$  & $52$  & $32355.77$ & $32610.98$  \\
+		LTA-DINA 		& $-16125$ & $52$ & $32355.77$  & $32610.98$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\noindent
+\textbf{4.2 Dominio de las habilidades predichas para el modelo LTA-DINA}\\
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+ 
+
+
+
+   
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+                 

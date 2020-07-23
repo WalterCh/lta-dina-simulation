@@ -1,0 +1,468 @@
+%% ------------------------------------------------------------------------- 
+\chapter[Modelos de clases latentes y diagn\'{o}stico cognitivo]{Modelos de clases latentes y diagn\'{o}stico cognitivo} \label{cap:concepto}
+	En muchas \'{a}reas de estudio, como en las ciencias sociales, ciencias de la salud y particularmente en las ciencias del comportamiento como la psicolog\'{i}a, es de sumo inter\'{e}s aproximarnos a constructos te\'{o}ricos, los cuales si bien no pueden ser observados directamente, asumimos que tienen un efecto sobre variables que si pueden ser medidas, permiti\'{e}ndonos un acercamiento a estos constructos y un mejor entendimiento acerca de las variables medidas.
+	Estos constructos son com\'{u}nmente llamados variables latentes en la literatura estad\'{i}stica y su modelo estad\'{i}stico especifica la distribuci\'{o}n conjunta de las variables observadas o llamadas tambi\'{e}n manifiestas (indicadores) y las variables latentes.
+	Por otro lado, los modelos de diagn\'{o}stico cognitivo son modelos psicom\'{e}tricos usados para evaluaci\'{o}n de estudiantes en cuanto a sus perfiles o clases y que nos permiten una medici\'{o}n efectiva del aprendizaje as\'{i} como tambi\'{e}n una mejor instrucci\'{o}n y posiblemente pol\'{i}ticas de intervenci\'{o}n educativa para hacer frente a las necesidades individuales y grupales de los estudiantes.
+	Es por eso, que se pasar\'{a} a estudiar todo lo concerniente a la integraci\'{o}n de estos conceptos         
+	
+	\section{Modelos de clases latentes}
+		El modelo de clases latentes es un caso particular de los modelos de variables latentes en el cual tanto las variables observables o manifiestas como las no observables o latentes son categ\'{o}ricas. La idea es poder agrupar a los individuos en clases seg\'{u}n las variables observables. Se considera que la variable latente es categ\'{o}rica como producto de una evidencia a priori o te\'{o}rica, o simplemente tomada as\'{i} por una cuesti\'{o}n pr\'{a}ctica. Para mayor detalle ver Lazarsfeld and Henry (1968).
+		Las ventajas del an\'{a}lisis de clases latentes son varios: reducen la complejidad de un conjunto de datos agrup\'{a}ndolos en clases, permite estimar varias probabilidades, y permite analizar datos categ\'{o}ricos sin la necesidad de aplicar transformaciones.
+		Se comienza a partir de dos supuestos para la versi\'{o}n est\'{a}ndar del modelo. Dentro de cada clase, todos los individuos tienen las mismas probabilidades de respuesta a las variables manifiestas.
+		Se cumple la independencia condicional; es decir, las respuestas entre los individuos son independientes dado que estos pertenecen a una misma clase.
+		Para tener una idea analicemos primero un modelo de clases latentes con variables manifiestas binarias, en el que la variable latente $L$ es unidimensional y presenta $C$ categor\'{i}as o clases que los denotaremos con el \'{i}ndice $c=1,2,\ldots C$. Sea ${ \pi  }_{ ic }$ la probabilidad de obtener una respuesta positiva a la variable manifiesta $ X_{ i }$, dado que el individuo $i$ est\'{e} en la clase $c$; es decir, $\pi_{i c}=P\left(X_{i}=1 | L=c\right)$ y sea ${ \eta  }_{ c }$ la probabilidad a priori de que un individuo pertenezca a la clase $c$. Entonces la funci\'{o}n de probabilidad conjunta del vector de respuestas manifiestas o patrones de respuesta $\boldsymbol{X}=( X_{ 1 }, X_{ 2 },\ldots , X_p)$ viene dada por:
+		\begin{equation}
+			f(\mathbf{x}) = P(\mathbf{X}=\mathbf{x}) = \sum_{c=1}^{C} P(\mathbf{X}=\mathbf{x} | L=c ) P(Y=c) = \sum_{c=1}^{C} g(\mathbf{x} | c) \eta_{c},
+			\label{2.1}
+		\end{equation}
+		donde
+		\begin{equation}
+			g(\mathbf{x} | c) = \prod_{i=1}^{p} \pi_{ic}^{x_{i}}\left(1-\pi_{i c}\right)^{1-x_{i}}
+			\label{2.2}
+		\end{equation}
+		y $x_{i}$ es la respuesta 1 o 0 a $X_{i}$.\\
+		
+		De esta manera, cada individuo es descrito por dos dimensiones: el vector de variables manifiestas $\boldsymbol{X}$ y el indicador de pertenencia a la clase.
+		La probabilidad a posteriori de que un individuo con un patr\'{o}n de respuestas $\boldsymbol{x}=(x_{1}, x_{2},\ldots, x_{p})'$ pertenezca a la clase 
+		$j$ es por tanto:
+		
+		\begin{equation}
+			h(c | \mathbf{x}) = P(L=c | \mathbf{X}=\mathbf{x}) = \frac{\eta_{c} \prod\limits_{i=1}^{p} \pi_{i c}^{x_{i}}\left(1-\pi_{i c}\right)^{1-x_{i}}}{\sum_{c=1}^{K} \eta_{c} \prod_{i=1}^{p} \pi_{i c}^{x_{i}}\left(1-\pi_{i c}\right)^{1-x_{i}}} .
+			\label{2.3}
+		\end{equation}
+		
+		Esta funci\'{o}n es utilizada luego como regla de clasificaci\'{o}n para asignar a un individuo a la clase que tiene mayor probabilidad de pertenencia, dado el patr\'{o}n de respuestas que tenga.
+		El modelo requiere de la estimaci\'{o}n de los par\'{a}metros ${ \eta  }_{ c }$ y ${ \pi  }_{ ic }$, y el c\'{a}lculo del ajuste del modelo. Otro aspecto es tambi\'{e}n identificar las clases latentes subyacentes e interpretarlas de manera que tengan un sentido con los datos.
+		
+	\section{Cadenas de Markov}
+		Extenderemos ahora el modelo de clases latentes a datos de caracter longitudinal para averiguar entre otras cosas como cambian, seg\'{u}n los datos, la pertenencia de un individuo a una clase. Para ello requeriremos del concepto de cadenas de Markov que pasamos brevemente a revisar.\\ 
+		
+		Consideremos un conjunto $E$ finito o numerable. Sea $X_{0}, X_{1}, X_{2},\ldots $ una sucesi\'{o}n de variables aleatorias discretas las cuales toman valores en $E$ y se asumen est\'{a}n definidas en un espacio probabilistico $(\Omega,A,P)$. El conjunto $E$ se denominar\'{a} espacio de estados, y sus elementos estados.
+		Las variables aleatorias ${X}_{0}, X_{ 1 },\ldots , X_{ n }$ se dicen independientes si y s\'{o}lo si, se cumple que:
+		
+		\begin{equation}
+		P( X_{ 0 }= X_{ { 0} }, X_{ 1 }= X_{ { 1 }},\ldots , X_{ n }= X_{ { n } })=\prod _{ k=1 }^{ n }{ P( X_{ k }= X_{ k }) } ,       \label{2.4}
+		\end{equation}
+		
+		para todo estado  ${x}_{0}, X_{ 1 },\ldots , X_{ n }$. En este caso los eventos $A=\left\{  X_{ 0 }= X_{ 0 },\ldots , X_{ n }= X_{ n } \right\} $ y $B=\left\{  X_{ n+1 }= X_{ n+1 },\ldots , X_{ n+m }= X_{ n+m } \right\}$ son independientes para cualesquier $n=0,1,\ldots $ y $m=1,2,\ldots $ y cualquiera sea la sucesi\'{o}n de estados $ X_{ 0 },\ldots , X_{ n+m }$. La dependencia markoviana consiste en que la probabilidad del suceso B depende s\'{o}lo del valor que toma la variable aleatoria $ X_{ n }$ y no de los valores que toman las variables aleatorias $X_{ 0 },\ldots , X_{ n-1 }$. Si el \'{i}ndice de la sucesi\'{o}n representa el tiempo y $n$ es el instante presente en una cadena de Markov, podemos decir que la probabilidad de que un suceso ocurra en los instantes futuros $n+1$,\ldots ,$n+m$, depende solamente del estado en que se encuentra la sucesi\'{o}n en el instante presente $n$ y no de los estados en que se encontr\'{o} en los instantes pasados $0,1,\ldots ,n-1$.\\    
+		Formalmente diremos que la sucesi\'{o}n $\left\{  X_{ n } \right\}$ es una cadena de Markov con espacio de estados discreto si:
+		
+		\begin{align}
+			P( X_{ n+1 } & = X_{ n+1 }| X_{ n }= X_{ n },\ldots , X_{ 0 }= X_{ 0 })= \ldots  \nonumber \\
+			&=P( X_{ n+1 }= X_{ n+1 }| X_{ n }= X_{ n }), \label{2.5}
+		\end{align}
+		
+		para todo $n = 1,2,\ldots $ y cualquier sucesi\'{o}n de estados $ X_{ 0 },\ldots , X_{ n+1 }$ en $E$, siempre que $P( X_{ n }= X_{ n },\ldots , X_{ 0 }= X_{ 0 })>0$. A la identidad (2.5) se le llama la propiedad de M\'{a}rkov. En adelante para no recargar notaciones asumiremos, sin p\'{e}rdida de generalidad, que el espacio de estados $E$ es un subconjunto de $\aleph $.
+		En tal sentido, diremos que una cadena de Markov es homog\'{e}nea en el tiempo si para todo par de estados $i,j$, la probabilidad condicionada $P( X_{ n+1 }=j| X_{ n }=i)$ no depende de $n$, es decir,
+		
+		\begin{equation}
+			P( X_{ 1 }=j| X_{ 0 }=i) = P( X_{ 2 }=j| X_{ 1 }=i)=\ldots = P( X_{ n+1 }=j| X_{ n }=i). \label{2.6} 
+		\end{equation}
+		
+		En general, utilizamos la expresi\'{o}n cadena de M\'{a}rkov para referirnos a una cadena de Markov homog\'{e}nea en el tiempo.
+		La caracterizaci\'{o}n de la cadena en este caso se definir\'{a} a trav\'{e}s de las probabilidades:
+		
+		\begin{equation}
+			p_{ij} = P( X_{ 1 }=j| X_{ 0 }=i) \label{2.7}
+		\end{equation} 
+		
+		y
+		 
+		\begin{equation*}
+			\pi_{i}^{0}=P( X_{0}=i) 
+		\end{equation*}  
+		
+		A la matriz $ P = [p _{ij}], i\in E,j\in  E$ (posiblemente infinita) se le denomina la matriz de transici\'{o}n, y al vector $\pi^{0} =({ \pi  }_{ i }^{ 0 })$, la distribuci\'{o}n inicial de la cadena de Markov. Es sencillo, ver que la matriz de transici\'{o}n satisface las siguientes propiedades:
+		
+		\begin{enumerate}
+			\item[i) ] $p_{ ij }\ge 0$ para todo par de estados $i,j$ en $E$
+			\item[ii) ] $\sum _{ j }^{  }{ p_{ ij }=1 }$ para todo estado $i$ en $E$
+		\end{enumerate}		
+	
+		\noindent
+		Por su parte, la distribuci\'{o}n inicial satisface las propiedades:
+		
+		\begin{enumerate}
+			\item[i) ] ${ \pi  }_{ i }^{0}\ge 0$ para todo estado $i$ en E,
+			\item[ii) ]  $\sum_{ i }{ { \pi  }_{ i }^{0} }=1$
+		\end{enumerate}
+		
+		La definici\'{o}n de cadena de Markov incluye como caso particular, las sucesiones de variables aleatorias independientes e id\'{e}nticamente distribuidas y tambi\'{e}n las sucesiones formadas por sumas parciales de variables aleatorias independientes e id\'{e}nticamente distribuidas, cuando dichas variables aleatorias toman valores enteros.
+		Consideremos ahora las probabilidades de transici\'{o}n de orden n de una cadena Markov $\left\{  X_{ k } \right\} $ con espacios de estados $E$, matriz de transici\'{o}n $P$ y distribuci\'{o}n inicial $\pi^{0}$. Dados dos estados $i,j$ sean:
+		
+		\begin{equation}
+		p_{ ij }^{ (n) }=P( X_{ n }=j| X_{ 0 }=i) \quad \mbox{ y } \quad \quad { \pi  }_{ i }^{( n) }=P( X_{ n }=i), \label{2.8}
+		\end{equation}
+		
+		a la matriz $p^{( n) }=[p_{ ij }^{ (n) }],$ se le llama la matriz de transici\'{o}n de orden n y al vector ${ \pi  }^{ n }=({\pi}_{ i }^{ n })$ la distribuci\'{o}n de probabilidad en el periodo $n$ de la cadena de Markov. Observemos que ${ \pi  }^{ 0 }$ es la distribuci\'{o}n inicial de la cadena de Markov y $P=p^{( 1) }$ es su matriz de transici\'{o}n. 
+		Las probabilidades de transici\'{o}n de orden $n$ satisfacen la ecuaci\'{o}n de Chapman-Kolgomorov:
+		
+		\begin{equation}
+			p_{ ij }^{ (m+n) }=\sum _{ k }^{  }{ p_{ ik }^{ (m) }p_{ kj }^{ (n) } } ,     \label{2.9}
+		\end{equation}
+		
+		para todo par de indices $m,n$ y todo par de estados $i,j$. Esto es, en notaci\'{o}n matricial, (\ref{2.9}) tiene la forma
+		
+		\begin{equation}
+			p^{ (m+n) }=p^{ (m) }\times p^{(n) }, \label{2.10}
+		\end{equation}
+		
+		donde $x$ denota el producto de matrices. En efecto, aplicando la f\'{o}rmula de la probabilidad total y la propiedad de Markov (\ref{2.5}) se obtiene: 
+		
+		\begin{align}
+			p_{ij}^{(m+n)} &= P( X_{ m+n }=j| X_{ 0 }=i)=\sum _{ k\ }^{  }{ P( X_{ m+n } } =j, X_{ m }=k| X_{ 0 }=i)= \nonumber \\
+			&=\sum _{ k\ }^{  }{ P( X_{ m+n } } =j| X_{ m }=k)P( X_{ m }=k| X_{ 0 }=i)=\sum _{ k\epsilon E  }^{  }{ p_{ ik }^{ (m) } } p_{ kj }^{ (n) }
+		\end{align}
+		
+		An\'{a}logamente se prueba que para la distribuci\'{o}n de probabilidad en el instante $n$ tiene lugar la identidad
+		
+		\begin{equation}
+			{ \pi  }_{ j }^{( m+n) }=\sum _{ k }^{  }{ { \pi  }_{ k }^{( m) } } p_{ kj }^{( n) } , \label{2.11}
+		\end{equation}
+		
+		para todo par de indices $m,n$ y todo estado $i$. En notaci\'{o}n matricial esto se escribe como:
+		
+		\begin{equation}
+			{ \pi  }^{ (m+n) }={ \pi  }^{ (m) }\times p^{(n) }\nonumber
+		\end{equation} 
+		
+		En particular, de (\ref{2.10}) resulta que $p^{(n) }=P\times p^{ (n-1) }$ y  $p^{(n)}=P^{n}$. En conclusi\'{o}n, la matriz de transici\'{o}n de orden $n$ es la potencia n-\'{e}sima de la matriz de transici\'{o}n $P$, y es correcto interpretar el super\'{i}ndice $n$ en la notaci\'{o}n $p^{ n }$ como la potencia n-\'{e}sima de la matriz $P$. La distribuci\'{o}n de probabilidad en el instante $n$ se obtiene mediante la f\'{o}rmula
+		
+		\begin{equation}
+			\pi^{n}=\pi^{0} \times p^{ n } ,   \label{2.12}
+		\end{equation}
+		
+		que tambi\'{e}n se escribe como:
+		
+		\begin{equation}
+			\pi_{ j }^{ n }=\sum _{ k }^{  }{\pi^{0}_{ k }p_{ kj }^{ n-1 } } , \label{2.13}
+		\end{equation}
+		
+		Calculemos ahora, para una elecci\'{o}n de \'{i}ndices ${ n }_{ 1 },\ldots ,{ n }_{ k }$ arbitraria, la distribuci\'{o}n del vector aleatorio $( X_{ { n }_{ 1 } },\ldots  X_{ { n }_{ k } })$, que llamamos la distribuci\'{o}n finito-dimensional de la cadena de Markov. Es claro que para este c\'{a}lculo es suficiente conocer las probabilidades de la forma 
+		
+		\begin{equation}
+			P( X_{ 0 }\epsilon { A }_{ 0 },\ldots , X_{ n }\epsilon { A }_{ n })\quad \quad (n=0,1,\ldots ), \nonumber
+		\end{equation}
+		
+		donde ${ A }_{ 0 },\ldots ,{ A }_{ n }$ son subconjuntos arbitrarios de E. A su vez, para calcular estas \'{u}ltimas probabilidades, es suficiente, dada una sucesi\'{o}n de estados ${ i }_{ 0 },\ldots ,{ i }_{ n }$, conocer las probabilidades
+		
+		\begin{align}
+			P( X_{ n } ={ i }_{ n },\ldots , X_{ 0 }={ i }_{ 0 }) & = \nonumber \\
+			& =P( X_{ n }={ i }_{ n }| X_{ n-1 }={ i }_{ n-1 })\ldots P( X_{ 1 }={ i }_{ 1 }| X_{ 0 }={ i }_{ 0 })P( X_{ 0 }={ i }_{ 0 }) \nonumber \\ 
+			&=p_{ { i }_{ n-1 }{ i }_{ n } }\ldots p_{ { i }_{ 0 }{ i }_{ 1 } }{ \pi  }_{ { i }_{ 0 } } .\label{2.14} 
+		\end{align}
+		
+		Este \'{u}ltimo c\'{a}lculo muestra que las distribuciones finito dimensionales de una cadena de Markov pueden determinarse si se conocen la matriz de transici\'{o}n $P$ y su distribuci\'{o}n inicial $\pi^{0}$. M\'{a}s a\'{u}n, es posible demostrar que la probabilidad de un suceso que depende de una cantidad arbitraria, no necesariamente finita, de variables aleatorias de la cadena de Markov, se puede hallar a partir de $P$ y de $\pi^{0}$ y que reciprocamente, dados un conjunto $E$, finito o numerable, una matriz $P=[ p _{ ij }], i\epsilon E,j\epsilon E$ que cumple las propiedades i) y ii) y un vector $\pi =({ \pi  }_{ i })_{i\epsilon E}$ que satisface las propiedades i) y ii) existe un espacio de probabilidades y una cadena de Markov homog\'{e}nea con espacio con espacio de estados $E$ y variables aleatorias definidas en este espacio de probabilidades, que tiene a $P$ como matriz de transici\'{o}n y a $\pi^{0}$ como distribuci\'{o}n inicial. De aqu\'{i} se obtiene la siguiente conclusi\'{o}n: Las propiedades probabil\'{i}sticas de una cadena de Markov, dependen \'{u}nicamente de la matriz transici\'{o}n y de la distribuci\'{o}n inicial de la cadena de Markov.
+		Cuando es necesario escribir de forma expl\'{i}cita la distribuci\'{o}n inicial $\pi^{0}$ de una cadena de Markov, escribimos $p_{ { \pi  }^{ 0 } }$ en lugar de $P$. En particular, si esta distribuci\'{o}n inicial est\'{a} concentrada en un estado $i$ escribimos $p_{ i }$ en vez de $p_{ { \pi  }^{ 0 } }$ y diremos que la cadena de Markov parte de $i$ ya que $p_{ 0 }( X_{ 0 }=i)=1$.
+		Consideremos un suceso arbitario de la forma
+
+		\begin{equation}
+			A=\left\{  X_{ { n }_{ 1 } }={ i }_{ { n }_{ 1 } },\ldots , X_{ { n }_{ k } }={ i }_{ { n }_{ k } } \right\} \nonumber
+		\end{equation}
+		
+		Observamos que las probabilidades $p_{ { \pi  }^{ 0 } }$ y $p_{ i }$ correspondientes a la cadena de Markov con la misma matriz de transici\'{o}n, satisfacen la igualdad:
+		
+		\begin{equation}
+			p_{ \pi^{0} }(A| X_{ 0 }=i)=p_{ i }(A), \nonumber
+		\end{equation}
+		
+		\noindent
+		como resulta de hacer ${ \pi^{0} }_{ { i }_{ 0 } }=1$ en la f\'{o}rmula (\ref{2.5}). Adem\'{a}s, tambi\'{e}n se cumple:
+		
+		\begin{equation}
+			p_{ \pi  }(A)=\sum _{ i\epsilon E}^{  }{ p_{ \pi^{0} } } (A| X_{ 0 }=i){ \pi  }_{ i }=\sum _{ i\epsilon E}^{  }{ p_{ i }(A){ \pi  }_{ i } } ,  \label{2.15}
+		\end{equation}
+		
+		\noindent
+		como resulta de aplicar el teorema de probabilidad total.
+		
+	\section{Modelos de transici\'{o}n de clases latentes}
+	\label{sec:An\'{a}lisis de transici\'{o}n latente }
+	
+		\subsection{Introducci\'{o}n}
+			El modelo de transici\'{o}n de clases latentes llamado tambi\'{e}n de mixtura de clases latentes de Markov es un modelo de variable latente similar al de clases latentes (LCA). Sin embargo, mientras que el LCA usa datos de corte transversal, el LTA es usado con data tipo panel o longitudinal para investigar si alg\'{u}n cambio ha ocurrido dentro de las clases latentes a trav\'{e}s del tiempo.
+			Cuando se dispone de datos longitudinales el modelo de transici\'{o}n de clases latentes permite direccionar un conjunto de preguntas: ?`Existe alg\'{u}n cambio entre las clases latentes a trav\'{e}s del tiempo? Si es asi como se puede caracterizar este cambio? Si un individuo se encuentra en una clase latente particular en el tiempo $t$, cu\'{a}l es la probabilidad de que este individuo permanezca en la misma clase latente en el tiempo $t+1$, y cual la probabilidad de que el individuo este en una clase latente diferente. El LTA es una forma de ajustar modelos que abordan este conjunto de preguntas adicionalmente al conjunto de preguntas abordadas. 
+			Es por eso que esta investigaci\'{o}n propone, no solo estudiar las clases latentes de algunos fen\'{o}menos educativos, sino tambi\'{e}n observar como los individuos transitan por las diferentes clases latentes a trav\'{e}s del tiempo. El LTA al igual que el LCA estima probabilidades de respuesta al item. Por lo tanto, se estiman tambi\'{e}n la prevalencia de las clases latentes y la incidencia de las transiciones entre las clases latentes mientras se ajusta un error de medici\'{o}n.     
+			El modelo de transici\'{o}n de clase latente con solo dos puntos en el tiempo se plantea como:     
+			
+			\begin{equation}
+				P(Y=y)=\sum _{ {c}_{1}=1 }^{C}{\sum _{ {c}_{2}=1 }^{C}{\delta _{c_1} \tau_{c_2|c_1} }}\prod _{ t=1 }^{ 2 }{  \prod_{ j=1 }^{J}{\prod_{ r_{j,t}=1 }^{R_j}{\rho_{j,r_{j,t}|c_t}^{I(y_{j,t}=r_{j,t})}  } }    }, \label{2.16}
+			\end{equation}
+			
+			\noindent
+			donde
+			
+			\begin{equation}
+				\sum _{ c_1 =1 }^{C}{\delta _{c_1} } =1,
+				\sum _{ { c }_{ 2 }=1 }^{ C }{ { \tau  }_{ c2|c1 } } =1,
+				\sum _{ r_{j,t}=1 }^{R_j}{\rho_{j,r_{j,t}|c_t} }  =1 ,\label{2.17}
+			\end{equation}
+			
+			siendo $Y = [Y_ {j,t}]$ la matriz de respuestas de cualquier individuo, $Y_{j,t}$, su respuesta al item $j$ en el tiempo $t$, $C$ el n\'{u}mero de clases latentes, $J$ el n\'{u}mero de items, $\delta _{c1}$ la probabilidad de pertenencia del individuo a la clase latente $c_1$ en el tiempo $1$, $\tau_{c2|c1}$ la probabilidad de transici\'{o}n de que el individuo pase de la clase latente $c_1$ en el tiempo $1$ a una clase $c_2$ en el tiempo $2$, $r_{j, t}$ la categor\'{i}a de respuesta al item $j$ en el tiempo $t$, $I(y_{j,t}=r_{j,t})$ una variable indicadora que es igual a $1$ si la respuesta al item $j$ en el tiempo $t$ es  $r_{j,t}$ y $0$ en caso contrario, y $\rho_{j,r_{j,t}|c_t}$, es la probabilidad de que su respuesta al item $j$ en el tiempo $t$ sea $r_{j,t}$ condicionado a la membresia a la clase latente $c_t$. Se asume que cada item $j$ tiene ${ R }_{ j }$ posibles categor\'{i}as de respuestas. La consideraci\'{o}n de un modelo con m\'{a}s de dos puntos en el tiempo es inmediata pero esta implica el incremento en el n\'{u}mero de par\'{a}metros, no s\'{o}lo en t\'{e}rminos de las probabilidades de transici\'{o}n sino tambi\'{e}n de los par\'{a}metros dentro de las probabilidades $\rho_{j,r_{j,t}|c_t}$ de respuesta al item del modelo.
+			
+			\noindent
+			\textbf{Ejemplo}\\
+			Supongamos como ilustraci\'{o}n que se tienen $J=6$ variables observables binarias, que han sido medidas en los tiempos $t=1,2$. Por ejemplo, si estamos estudiando la delincuencia en adolescentes, las variables observadas podrian ser 6 items del cuestionario de delincuencia, donde cada variable observada $j$ asumimos tiene ${r}_{j,t }=1,2$ categor\'{i}as de respuesta (si o no) en cada tiempo. La tabla de contingencia cruzando las 6 variables con los dos tiempos tiene ${ 2 }^{ 2\times 6 }=4,096$ celdas o patrones de respuesta. Los patrones de respuesta en estas, son representados como $({ r }_{ 1,1 },\ldots ,{r}_{6,2})$. Por ejemplo, un patr\'{o}n de respuesta podria ser (si,no,no,no,no,no,si,si,no,no,no,no) que representa la respuesta de $"si"$ para el primer item del cuestionario en el tiempo 1 hasta una respuesta de no para el sexto item en el tiempo 2.\\
+			Sea $L$ como antes, la variable latente categ\'{o}rica subyacente que tiene $C$ estados latentes. Sea ${L}_{1}$ que representa la variable latente categ\'{o}rica en el tiempo 1, donde ${ c }_{ 1 }=1,\ldots ,C$, ${L}_{2}$ representa la variable latente categ\'{o}rica en el tiempo 2, donde ${ c }_{ 2 }=1,\ldots ,C$ en el tiempo 2 y as\'{i} sucesivamente hasta ${ L }_{ T }$ que representa a la variable latente categ\'{o}rica en el tiempo $T$, con ${ c }_{ T }=1,\ldots ,C$. 
+			
+			Las prevalencias en las clases latentes son estimadas para cada punto en el tiempo. As\'{i}, por ejemplo para un modelo con dos puntos en el tiempo como el anterior y con cuatro clases latentes, ocho prevalencias requerir\'{a}n ser estimadas en total, mostrando ellas la proporci\'{o}n de personas en cada uno de los estados latentes. Por lo tanto, observando la prevalencia en estos estados podemos ver el aumento o disminuci\'{o}n en las prevalencias entre los puntos en el tiempo considerados en el estudio, asimismo observar patrones de cambio y como las personas se mueven entre los estados.
+			
+			Las probabilidades de respuesta al item representan las probabilidades de que las personas den respuestas correctas a cada item en particular sujeto a su clase de pertenencia. El modelo de transici\'{o}n de clase latente es particularmente usado m\'{a}s como un m\'{e}todo exploratorio, en donde el etiquetado o codificaci\'{o}n  de los estados latentes se realiza evaluando las probabilidades de respuesta al item. Existe una probabilidad de respuesta al item para cada combinaci\'{o}n item-estado. Por lo tanto, el n\'{u}mero de celdas en una tabla de probabilidades de respuesta al item es el n\'{u}mero de items multiplicado por el n\'{u}mero de estados latentes.
+			
+			Las probabilidades de transici\'{o}n son de relevante importancia porque permiten identificar si ocurri\'{o} alg\'{u}n cambio entre los estados latentes a trav\'{e}s del tiempo. Para un modelo con dos puntos en el tiempo $(T=2)$, las probabilidades de transici\'{o}n permiten la creaci\'{o}n de una tabla de clasificaci\'{o}n cruzada con el n\'{u}mero de estados latentes en el tiempo o etapa 1 y el n\'{u}mero de estados latentes en el tiempo o etapa 2. En general, dado cierto n\'{u}mero de puntos en el tiempo $T$, el modelo de transici\'{o}n de clase latente estima $T-1$ matrices de probabilidades de transici\'{o}n. Cada examinado, se asume que puede ser miembro de uno y solo un estado latente en cada punto en el tiempo.
+			
+			El modelo de transici\'{o}n de clases latentes asume la no existencia de datos faltantes en las variables indicadoras observadas. Sin embargo, los datos faltantes en el modelo LTA es sobrellevada de la misma forma que en el modelo de clases latentes LCA. Los datos pueden usarse a partir de las respuestas que dan los individuos a algunas de las preguntas en un tiempo en particular y para aquellos que solo est\'{a}n presentes en un subconjunto en el tiempo de medici\'{o}n. Se hace entonces la cl\'{a}sica suposici\'{o}n datos faltantes (missing at random).
+			
+			En el presente estudio, a las clases latentes del modelo de transici\'{o}n las llamaremos estados latentes teniendo en cuenta que las clases latentes son estados temporales, y que los individuos pueden moverse hac\'{i}a dentro y fuera de estos estados.
+			
+			La combinaci\'{o}n de grandes grados de libertad y la extrema dispersi\'{o}n no permiten probar hip\'{o}tesis tradicionales acerca del ajuste absoluto del modelo de transici\'{o}n de clases latentes. Esto se debe a que la distribuci\'{o}n de la estad\'{i}stica ${ G }^{ 2 }$(radio de verosimilitud) no es muy bien aproximada por una distribuci\'{o}n Ji-cuadrado y por consiguiente los valores $p$, son bastante inexactos. Es por eso que se prefiere enmarcar la selecci\'{o}n del modelo en t\'{e}rminos relativos donde sea posible, es decir, ajustar una serie de modelos y confiar en los AIC y BIC para tomar decisiones acerca del modelo que represente mejor a nuestros datos. Las pruebas de hip\'{o}tesis son usadas cuando se desea comparar modelos de transici\'{o}n anidados. Tambi\'{e}n la parsimonia y la conceptualizaci\'{o}n te\'{o}rica son importantes criterios de selecci\'{o}n en un modelo LTA, tal como lo es en un modelo de clase latente.
+			
+			Como dijimos anteriormente en el modelo LTA interesan estimar 3 conjuntos diferentes de par\'{a}metro.
+		
+		\subsection{Las prevalencias de los estados latentes}
+			La prevalencia del estado latente $c$ en el tiempo $t$ se denota por ${\delta  }_{ ct }$ , y viene dada por la probabilidad de membres\'{i}a al estado latente $c$ en el tiempo $t$. En el ejemplo anterior hay 2 estados latentes en cada uno de los dos tiempos, y por tanto 4 prevalencias. Se tendr\'{a} una probabilidad de la membres\'{i}a al estado latente 1 en el tiempo 1.
+			Debido a que los estados latentes son mutuamente excluyentes y exhaustivos en cada periodo de tiempo, es decir, que cada individuo es miembro de uno y solo un estado latente en el tiempo $t$, se debe cumplir que:
+			
+			\begin{equation}
+				\sum_{ c_t =1 }^{C}{\delta _{c_t} } =1 .
+				\label{2.18}
+			\end{equation}
+			
+			En otras palabras, dentro de un tiempo en particular $t$, la prevalencia en los estados latentes debe sumar 1.
+			
+			\subsection{Las probabilidades de respuesta al item}
+			La probabilidad de obtener una respuesta ${ r }_{ j,t }$ a la variable observada $j$, condicionada a la membres\'{i}a en el estado latente ${ c }_{ t }$ en el tiempo $t$ se denota mediante ${ \rho  }_{ j,{ r }_{ j,t }|{ c }_{ t } }$. Para cada combinaci\'{o}n del estado latente $c_{t}$ de la variable observada $j$ en el tiempo $t$, hay $R_{j}$ probabilidades de respuesta al item. Nuevamente cada individuo proporciona una y sola una respuesta alternativa a la variable $j$ en un tiempo espec\'{i}fico $t$ y por tanto se debe cumplir que: 
+			
+			\begin{equation}
+				\sum _{ { r }_{ j,t }=1 }^{ { R }_{ j } }{ { \rho  }_{ j,{ r }_{ j,t }|{ s }_{ t } }=1 }, \label{2.19}
+			\end{equation}
+			
+			para todo $j,t$. En otras palabras, para los individuos en el estado latente ${ c }_{ t }$ en el tiempo $t$, las probabilidades de cada respuesta alternativa a la variable $j$ deben sumar 1.
+			
+		\subsection{Las probabilidades de transici\'{o}n}
+			La probabilidad de transici\'{o}n a un estado latente $i$ en el tiempo $T$, condicionada a su membresia al estado latente $j$ en el tiempo $T-1$ se denota mediante ${ \tau  }_{ i|j }$.
+			Las $\tau$ s por lo general son acomodadas en una matriz de probabilidades de transici\'{o}n de la siguiente manera:
+			
+			\begin{equation} 
+				\left[ \begin{array}{cccc} 
+					\tau_{1|1} & \tau_{2|1} & \ldots & \tau_{c|1} \\  
+					\tau_{1|2} & \tau_{2|2} & \ldots & \tau_{c|2} \\    
+					\vdots & \vdots & \ddots & \vdots \\
+					\tau_{1|c} & \tau_{2|c} & \ldots & \tau_{c|c} \\    
+				\end{array} \right] , \label{2.20}
+			\end{equation}
+			
+			donde ${ \tau  }_{ i|j }=P({ L }_{ T }=i|{ L }_{ T-1 }=j)$.\\
+			
+			Los individuos que se encuentran en un estado latente ${c }_{ T }$ en el tiempo $T$, estar\'{a}n en solo un estado latente en el tiempo $T+1$, ${ c }_{ T+1 }$ el cual puede ser el mismo estado latente ${ c }_{ t }$ o puede ser uno diferente. En cada uno de los estados latentes de la membres\'{i}a estos son mutuamente excluyentes y exhaustivos, es decir, los individuos pertenecen solo a un estado latente en cada tiempo. Por consiguiente se cumple:
+			
+			\begin{equation}
+				\sum_{ { c }_{ T+1 }=1 }^{ C }{ { \tau  }_{ { c }_{ t+1 }|{ c }_{ t } }=1 } , \label{2.21}
+			\end{equation}
+			
+			En otras palabras, cada fila de la matriz de probabilidades de transici\'{o}n debe sumar 1
+			
+		%%
+		\subsection{Restricci\'{o}n de par\'{a}metros en el an\'{a}lisis de transici\'{o}n latente}
+			Algunas restricciones en los par\'{a}metros pueden ser usadas en el modelo LTA. Estas se fijan en la prevalencia de los estados latentes, en las probabilidades de respuesta al item, o en las probabilidades de transici\'{o}n en el modelo de transici\'{o}n latente. Dos tipos diferentes de restricci\'{o}n de par\'{a}metros son comunmente usados: los par\'{a}metros pueden ser fijos o restringidos. 
+			Un par\'{a}metro que es fijo en cierto valor particular no es estimado. Antes de comenzar la estimaci\'{o}n, su valor debe ser especificado en el rango de 0 a 1. Este valor fijo est\'{a} fuera de los limites del procedimiento de estimaci\'{o}n. 
+			Cuando los par\'{a}metros est\'{a}n restringidos, estos son ubicados en un conjunto equivalente junto con otros par\'{a}metros. La estimaci\'{o}n de todos los par\'{a}metros en un conjunto equivalente est\'{a} restringida a ser igual al mismo valor, el cual puede ser cualquier valor en el rango de 0 a 1. Un modelo simple de transici\'{o}n latente puede contener cualquier combinaci\'{o}n de par\'{a}metros fijos y restringidos.          
+			Debido a que los par\'{a}metros fijos no se estiman, estos no contribuyen al n\'{u}mero total de par\'{a}metros a estimar. El conjunto equivalente cuenta como un \'{u}nico parametro de estimaci\'{o}n, independientemente de cuantos par\'{a}metros conforman el conjunto. 
+			
+		%%
+		\subsection{Restricciones en las probabilidades de respuesta al \'{i}tem}
+			Es una buena idea restringir las probabilidades de respuesta al item en el modelo LTA para que estas sean iguales a trav\'{e}s del tiempo donde sea posible y razonable hacerlo, es decir, donde quiera una medida de invarianza a trav\'{e}s del tiempo puede ser supuesta. Existen razones conceptuales y practicas para hacer esto.
+			La raz\'{o}n conceptual es que estos modelos de transici\'{o}n latente son mucho m\'{a}s faciles de interpretar si las probabilidades de respuesta al item son id\'{e}nticas a trav\'{e}s del tiempo. Se ha discutido mucho acerca de la medida de invarianza a trav\'{e}s de los grupos y tambi\'{e}n como probar hip\'{o}tesis acerca de la medida de invarianza. Si la probabilidades de respuesta al item son iguales a lo largo de los grupos entonces la interpretaci\'{o}n de las clases latentes es identica a lo largo de los grupos tambi\'{e}n. Esto significa que cualquier diferencia en los grupos observados en la prevalencia de las clases latentes pueden ser interpretadas simplemente como diferencias cuantitativas; ciertas clases latentes ser\'{a}n m\'{a}s grandes en algunos grupos que en otros. Por otro lado, si las probabilidades de respuesta al item no son iguales a lo largo de los grupos, entonces el significado de las clases latentes varia a lo largo de los grupos.
+			Si esto sucede las comparaciones en los grupos de las prevalencias en las clases latentes llegar a ser menos sencillas. Cuando se interpreta las diferencias en la prevalencia de clases latentes se hace necesario tener en cuenta cualquier diferencia en el significado de las clases latentes en el mismo tiempo. Desde luego, dependiendo de las preguntas de investigaci\'{o}n, algunas veces las diferencias cualitativas pueden ser interesantes en si mismas.
+			En el mismo sentido, la matriz de probabilidades de transici\'{o}n en el LTA es f\'{a}cil de interpretar si hay medidas equivalentes a trav\'{e}s de los tiempos. Si las probabilidades de respuesta al item son id\'{e}nticas a trav\'{e}s del tiempo, el significado de los estados latentes permanece constante a trav\'{e}s del tiempo. Esto significa por ejemplo, que un elemento en la diagonal de la matriz de probabilidades de transici\'{o}n refleja la probabilidad de la membresia en el estado latente $s$ en el tiempo $t+1$ condicionada a la membresia en el mismo estado latente $s$ en el tiempo $t$. Para extender de que las probabilidades de respuesta al item correspondientes al estado latente $s$ cambie a trav\'{e}s del tiempo, el significado del estado latente $s$ cambiar\'{a}. Luego, ya no es tan claro como interpretar esta probabilidad de transici\'{o}n, porque junto con la interpretaci\'{o}n cuantitativa tambi\'{e}n cambia a trav\'{e}s del tiempo la membresia del estado latente. Es necesario entonces interpretar el cambio a trav\'{e}s del tiempo en el sentido de las clases latentes. Sin embargo, dependiendo de las preguntas de investigaci\'{o}n este cambio cualitativo puede ser muy interesante, particularmente si es significativo para su desarrollo.           
+			
+			La raz\'{o}n principal para restringir las probabilidades de respuesta al item a que sean iguales a trav\'{e}s del tiempo es para ayudar a estabilizar la estimaci\'{o}n y mejorar el problema de identificabilidad. En los modelos de transici\'{o}n latente pueden haber un gran n\'{u}mero de probabilidades de respuesta al item, particularmente en modelos con m\'{a}s de dos mediciones en el tiempo. Imponer restricciones a los par\'{a}metros en el tiempo puede reducir considerablemente el n\'{u}mero de par\'{a}metros a estimar.
+		
+	\section{Modelos de diagn\'{o}stico cognitivo}
+		Los modelos de diagn\'{o}stico cognitivo han sido desarrollados para estudiar los procesos cognitivos subyacentes al aprendizaje y para proporcionar informaci\'{o}n formativa acerca de cada estudiante. En t\'{e}rminos m\'{a}s t\'{e}cnicos, el diagn\'{o}stico cognitivo educacional es una evaluaci\'{o}n usada para identificar los atributos cognitivos que los estudiantes necesitan tener para lograr un dominio en particular y para clasificarlos dentro de grupos de diagn\'{o}stico basados en los atributos que ellos poseen (Rupp et al.,2010). Un diagn\'{o}stico cognitivo permite conocer un perfil detallado de habilidades dominadas o no dominadas para cada examinado m\'{a}s alla de darnos un puntaje general como lo hace la teor\'{i}a de respuesta al item. Adem\'{a}s cada participante es clasificado dentro de una clase cognitiva en la cual todos los individuos tienen el mismo patr\'{o}n en el dominio de los atributos.
+		
+		Antes de usar la evaluaci\'{o}n de diagn\'{o}stico cognitivo, es necesario primero identificar las variables latentes que ser\'{a}n medidas en una evaluaci\'{o}n en particular, asi como los items que buscar\'{a}n medir estas variables. Estas variables latentes han recibido diversos nombres en la literatura como por ejemplo: habilidades, atributos, rasgos latentes o perfiles latentes. Para especificar que variables son medidas con que items, la evaluaci\'{o}n cognitiva parte de la llamada matriz $Q$:
+		
+		\begin{equation} 
+			Q = \left[ \begin{array}{cccc} 
+				q_{11} & q_{12} & \ldots & q_{1K} \\  
+				q_{21} & q_{22} & \ldots & q_{2K} \\    
+				\vdots & \vdots & \ddots & \vdots \\
+				q_{J1} & q_{J2} & \ldots & q_{JK} \\    
+			\end{array} \right] \label{2.22}
+		\end{equation}
+		
+		Esta matriz define la relaci\'{o}n entre todos los $J$ items y $K$ atributos, nombre que en adelante usaremos para representar a las variables latentes. Especificamente, la matriz Q es una tabla de items por atributo que especifica si cada atributo es medido o no por un item a trav\'{e}s de valores binarios 1s y 0s.\\
+		Se realiza un test constru\'{i}do por expertos en el \'{a}rea de inter\'{e}s quienes definen una matriz $Q$ que indica los atributos requeridos para responder cada uno de los $J$ items del test. As\'{i}, ${q}_{ jk }$ toma el valor de 1 si el atributo $k$ es relevante para responder correctamente el item $j$ y 0 en caso contrario.
+		Por ejemplo, para un test con 10 items que evalua la presencia de 4 atributos, una matriz $Q$ podr\'{i}a estar dada por:
+		
+		\begin{equation} 
+			Q = \left[ \begin{array}{cccc} 
+				0 & 1 & 0 & 1 \\  
+				1 & 0 & 0 & 0 \\
+				1 & 1 & 1 & 0 \\  
+				0 & 1 & 0 & 0 \\
+				1 & 0 & 0 & 0 \\  
+				0 & 1 & 1 & 1 \\
+				1 & 0 & 1 & 1 \\  
+				0 & 0 & 1 & 0 \\
+				0 & 0 & 1 & 1 \\  
+				1 & 1 & 0 & 0 \\
+			\end{array} \right] \label{2.23}
+		\end{equation}
+		
+		La fila 1 indica que para responder correctamente el item 1, es necesario que el individuo posea el segundo y cuarto atributo, m\'{a}s no el primero y tercero.
+		
+		La creaci\'{o}n de esta matriz es realizada comunmente por expertos en la materia, bas\'{a}ndose en juicios te\'{o}ricos. Cualquier error de especificaci\'{o}n en la matriz Q puede causar errores en la clasificaci\'{o}n de los examinados al considerarlos en los grupos de diagn\'{o}stico err\'{o}neos. Para minimizar este error de clasificaci\'{o}n debido a la falsa especificaci\'{o}n de la matriz $Q$ y para mejorar la evaluaci\'{o}n varios m\'{e}todos de especificaci\'{o}n han sido propuestos(Chiu, 2013, Close ,2012; J. Liu, Xu and Ying, 2012; Xu, 2013).\\
+		Diferentes modelos de diagn\'{o}stico cognitivo aparecen en la literatura, los cuales pueden clasificarse como compensatorios y no compensatorios. Los CDMs compensatorios permiten que una habilidad requerida para responder un item pueda ser compensada con otra habilidad adicional. Mientras, que los modelos no compensatorios requieren que cada una de las habilidades est\'{e}n presentes para producir una respuesta correcta al item.
+		Como un ejemplo de modelo no compensatorio tenemos al modelo DINA. De otro lado, como ejemplo de un modelo compensatorio podemos considerar el modelo DINO.
+		Seguidamente, describiremos brevemente estos modelos y su generalizaci\'{o}n.
+		
+		\subsection{El modelo DINA}
+			El modelo DINA(de la Torre y Douglas, 2004; Haertel, 1989; Junker and Sijtsma, 2001; Macready and Dayton, 1977) es un CDM no compensatorio que asume que la falta de un atributo  no puede ser compensada por la existencia de otro atributo. Esta restricci\'{o}n significa que para responder correctamente a un item, un examinado necesita en teor\'{i}a dominar todos los atributos requeridos para ese item. La principal restricci\'{o}n en el modelo DINA es que este no hace distinciones entre los evaluados que no dominaron uno o m\'{a}s atributos de los requeridos.
+			
+			El modelo DINA estima la relaci\'{o}n entre $N$ individuos y las $K$ habilidades bas\'{a}ndose en el patr\'{o}n de respuestas de los individuos a los items, el cual es expresado como una matriz de unos y ceros, donde 1 se asigna cuando el individuo responde correctamente al item j y 0 en caso contrario. Esta relaci\'{o}n se resume en una matriz $N\times K$, llamada $A$ y que se define por:
+			
+			\begin{equation} 
+				A = \left[ \begin{array}{cccc} 
+					\alpha_{11} & \alpha_{12} & \ldots & \alpha_{1k} \\  
+					\alpha_{21} & \alpha_{22} & \ldots & \alpha_{2n} \\    
+					\vdots & \vdots & \ddots & \vdots \\
+					\alpha_{N1} & \alpha_{N2} & \ldots & \alpha_{NK} \\    
+				\end{array} \right], \label{2.24}
+			\end{equation}
+			
+			la cual posee al igual que $Q$ una estructura binaria, es decir, con elementos 0 y 1, donde cada ${ \alpha  }_{ ik }$ se define como:
+			
+			\begin{equation}
+				\alpha_{i k}=\left\{\begin{array}{cl}
+							1 & ,\mbox{si el individuo $i$ domina la habilidad $k$ }\\
+							0 & ,\mbox{en caso contrario}
+						\end{array}\right. \label{2.25}
+			\end{equation}
+			
+			A diferencia de la matriz $Q$, las entradas en la matriz A son latentes; es decir, no observables.\\    
+			El modelo DINA del acr\'{o}nimo en ingl\'{e}s (Deterministic Input Noisy AND gate) es de naturaleza conjuntiva, es decir, que para que un individuo $i$ responda correctamente al item $j$ necesitar\'{a} de todas las habilidades que conciernen a tal item, el proceso tendr\'{a} como salida 1 si el individuo posee todas las habilidades requeridas para responder correctamente al item o 0 en caso contrario. Ello hace que sea necesario definir las siguientes variables dicot\'{o}micas:
+			
+			\begin{equation}
+				\eta_{i j}=\left\{\begin{array}{cl}
+							1	& ,\mbox{ si el individuo } i \text { domina todas las habilidades que } \\
+								& \mbox{se necesitan para responder correctamente el item } j \\
+							 {0} & ,\mbox{ en caso contrario}
+						\end{array}\right. \label{2.26}
+			\end{equation}
+			
+			y se cumple que $\eta_{i j}=\prod_{k=1}^{K} \alpha_{i k}^{q_{j k}}$.\\
+			
+			Adem\'{a}s, la denominaci\'{o}n de ruido atribu\'{i}da al modelo se da pues, pudiera darse el caso que los individuos que dominan todas las habilidades necesarias para un item fallen y aquellos que no las dominan todas acierten.
+			Esto introduce dos probabilidades de error(par\'{a}metros), los cuales al definirse la respuesta binaria del individuo $i$ a un item $j$ por $Y_{ij}$ vienen dadas por:
+			
+			\begin{itemize}
+				\item El par\'{a}metro de desliz del item $j$ $({ s }_{ j })$ es definido como la probabilidad de responder incorrectamente a un item $j$ a pesar de que el examinado domine todos los atributos requeridos para hacerlo, es decir:
+				
+				\begin{equation}
+					{s}_{j}=P({Y}_{ij}=0|{ \eta  }_{ ij }=1). \label{2.27}
+				\end{equation}
+				
+				\item El par\'{a}metro de adivinaci\'{o}n $({g}_{j})$ es definido como la probabilidad de responder correctamente a un item $j$ a pesar de no dominar todas las habilidades requeridas para hacerlo:
+				
+				\begin{equation}
+					g_{ j }=P({ Y }_{ ij }=1|{ \eta  }_{ ij }=0). \label{2.28}
+				\end{equation}
+			\end{itemize}	
+				
+			Adem\'{a}s de la estimaci\'{o}n de estos par\'{a}metros el modelo DINA requiere estimar las probabilidades ${ \pi  }_{ c }=P({ \boldsymbol{\alpha_{i} }}={\boldsymbol{\alpha_{c}})}$ de pertenencia de cada individuo $i$ a la clase o perfil latente $c$. En adelante denotaremos por $L$ a la variable aleatoria que nos indica la clase de pertenencia de un individuo.
+			
+			El modelo DINA define la probabilidad de que un individuo $i$, que pertenece a la clase $c$, responda correctamente a un item $j$ mediante:
+			
+			\begin{equation}
+				P_{c j}=P\left(Y_{i j}=1 | \alpha_{i}=\alpha_{c}, \theta_{j}\right)=\left(1-s_{j}\right)^{\eta_{i j}} g_{j}^{1-\eta_{i j}}, \label{2.29}
+			\end{equation}
+			
+			donde $\theta_{ j }=({ g }_{ j },{ s }_{ j })$ es un vector fila de las probabilidades de error del item ya definidos anteriormente. En general, asumiendo independencia condicional y usando la ecuaci\'{o}n anterior, la probabilidad de observar la respuesta $x_{i j} \in\{0,1\}$  en el individuo $i$, que pertenece a la clase $c$, viene dada por:
+			
+			\begin{equation}
+				P({ Y }_{ ij }={ y }_{ ij }\quad|{ \alpha  }_{ i }={ \alpha}_{ c },{ \theta  }_{ j })=p_{ cj }^{ { y }_{ ij } }(1-p_{ cj })^{ 1-{ y }_{ ij }}, \label{2.30}
+			\end{equation}
+			
+			donde ${P}_{cj}$ viene dada por la expresi\'{o}n (\ref{2.29}).
+			Utilizando el teorema de probabilidad total y la ecuaci\'{o}n (\ref{2.30}), se deduce que la probabilidad de obtener por parte del individuo $i$ un patr\'{o}n de respuestas $\boldsymbol{y}=[y_{1}, y_{2}, \ldots, y_{J}]$ dado los par\'{a}metros de todos los items, que resumimos en un vector $\theta$, y las probabilidades de pertenencia a las clases latentes $\pi=\left(\pi_{1}, \pi_{2}, \dots, \pi_{C}\right)$, est\'{a} dada por:
+			
+			\begin{equation}
+				P\left(\boldsymbol{Y}_{i}=\boldsymbol{y}| \boldsymbol{\alpha}_{i}, \boldsymbol{\pi}, \boldsymbol{\theta}\right)=\sum_{c=1}^{C} \pi_{c}\left[\prod_{j=1}^{J} P\left(Y_{ij}=y_{j} | \boldsymbol{\alpha}_{i}=\boldsymbol{\alpha}_{c}, \boldsymbol{\theta}_{j}\right)\right] \label{2.31}  	
+			\end{equation}
+			
+			Con esto se obtiene finalmente la siguiente funci\'{o}n de verosimilitud de observar una muestra de respuestas de $N$ individuos a los $J$ items:
+			
+			\begin{equation}
+				L(\boldsymbol{\alpha}, \boldsymbol{\pi}, \boldsymbol{\theta})=\prod_{i=1}^{N} P\left(\boldsymbol{Y}_{\boldsymbol{i}}=\boldsymbol{y}_{i} | \boldsymbol{\alpha}_{i}, \boldsymbol{\pi}, \boldsymbol{\theta}\right)=\prod_{i=1}^{N}\left\{\sum_{c=1}^{C} \pi_{c}\left[\prod_{j=1}^{J} P_{c j}^{y_{i j}}\left(1-P_{c j}\right)^{1-y_{i j}}\right]\right\}, \label{2.32}  	
+			\end{equation}
+			
+			donde $\boldsymbol{\alpha}=\left(\boldsymbol{\alpha}_{1}, \boldsymbol{\alpha}_{2}, \ldots, \boldsymbol{\alpha}_{C}\right)$ y ${ \boldsymbol{y} }_{i}=\left( y_{ 11 },\ldots ,y_{ i_{J} } \right)$ denota al patr\'{o}n de respuestas observado para el examinado $i$.
+			
+	
+		\subsection{El modelo DINO}
+			El modelo DINO (del acr\'{o}nimo en ingl\'{e}s deterministic input, noisy or gate) es un modelo de diagnostico cognitivo compensatorio(Templin,2004; Templin, et al.,2006), porque asume que la falta de un atributo puede ser compensada por otro. En otras palabras, el dominar al menos un atributo compensa el deficit de no dominar todos los otros atributos medidos.
+			De la misma manera que en el modelo DINA, los par\'{a}metros de adivinaci\'{o}n y desliz son estimados en los niveles de los items. El modelo DINO se caracteriza por emplear una regla de compensaci\'{o}n disyuntiva en la cual la presencia de al menos una medida del atributo garantiza una probabilidad alta de aprobaci\'{o}n del item.
+			El modelo DINO estima la probabilidad de respuesta correcta al item $j$ por parte de un individuo $i$ que pertenece a la clase latente $c$ de la siguiente manera:
+			
+			\begin{equation}
+				P_{cj}=P\left(Y_{i j}=1 |{ \alpha  }_{ i }={ \alpha}_{ c },{ \theta  }_{ j }\right)=\left(1-s_{j}\right)^{\omega_{i j}} g_{j}^{\left(1-\omega_{i j}\right)}, \label{2.33}  	
+			\end{equation}
+			
+			donde:
+			
+			\begin{equation}
+				\omega_{ ij }=1-\prod_{k=1}^{K}\left(1-\alpha_{i k}\right)^{q_{j k}}.  \label{2.34}  	
+			\end{equation}
+			
+			En caso de que el atributo $k$ no sea medido por el item $j$, $q_{j k}$ tomar\'{a} el valor de 0 y en consecuencia el valor de $1-\alpha_{i k}$ no importar\'{i}a. Por otra parte, si el atributo $k$ es medido por el item $j$,  $q_{j k}$ tomar\'{a} el valor de 1, y en consecuencia  $1-\alpha_{i k}$ se toma en cuenta para el valor final que ${ \omega  }_{ ij }$ tome. Si el respondiente en la clase latente $i$ domina el atributo $k$,  $\alpha_{i k}$ toma el valor de 1, y de este modo $1-\alpha_{i k}$ ser\'{a} igual a 0. Sin embargo, si el respondiente en la clase latente $i$ no domina el atributo $k$, entonces  $1-\alpha_{i k}$ es 1. 
+			Debido a que la ocurrencia de ${ \omega  }_{ ij }=1$ depende de la existencia de al menos un 0 en el t\'{e}rmino de multiplicaci\'{o}n, el dominio de al menos un atributo aumenta significativamente la probabilidad de acertar el item.
+			El modelo DINO es usado cuando solo un atributo se necesita para dominar la habilidad a diferencia de otros que necesitan m\'{a}s de un atributo(Rupp et al., 2010). Los par\'{a}metros de adivinaci\'{o}n ${ g }_{ j }$ y desliz ${ s }_{ j }$ en el modelo DINO se definen de la misma manera que en el modelo DINA.      
+			
+			\subsection{El modelo G-DINA} \label{sec:GDINA}
+				Como se coment\'{o} anteriormente los modelos DINA y DINO dividen para cada item $j$ a las personas en dos grupos. En el modelo DINA por ejemplo, un primer grupo est\'{a} compuesto por los individuos que presentan todos los atributos requeridos para dar una respuesta correcta a este item, y el segundo grupo formado por el resto de individuos.
+				El modelo G-DINA (del acr\'{o}nimo en ingl\'{e}s Generalized Deterministic Input Noisy and gate) cuestiona la suposici\'{o}n de igual probabilidad de responder correctamente para los individuos del segundo grupo y propone una generalizaci\'{o}n. As\'{i}, en lugar de formar solo dos grupos, el modelo G-DINA forma ${ 2 }^{ { K }_{ j }^{ * } }$ grupos, donde $K_{j}^{*}$ es el n\'{u}mero de atributos requeridos para el item $j$. Por ejemplo cuando $K_{j}^{ * } =2$ , en lugar de 2, se crean 4 grupos latentes, donde cada uno de ellos pueden tener diferentes probabilidades de \'{e}xito.
+				
+				El modelo generalizado de entrada determin\'{i}stica con ruido y salida (G-DINA) parte de un contexto en el que $N$ individuos denotados por $i = 1,2,\ldots ,N$, son examinados mediante un test con $J$ items denotados por $j = 1, 2,\ldots ,J$, cada uno de los cuales requieren la presencia de ${ K }^{*}_{ j }$ atributos para ser respondidos correctamente, donde ${K}_{j}^{*}\le K$, siendo $K$ la totalidad de atributos evaluados por el test.
+				
+				De los resultados del test obtenemos una matriz observable binaria ${y}=\left[ {y}_{ij} \right]$  de orden $N\times J$ que representa las respuestas de los $N$ entrevistados a los $J$ items. De tal manera, que ${x}_{ij}$ toma el valor 1 si el individuo respondi\'{o} correctamente al item $j$ y 0 en caso contrario.
+				
+				\begin{equation} 
+					y = \left[ \begin{array}{cccc} 
+					y_{11} & y_{12} & \ldots & y_{1J} \\  
+					y_{21} & y_{22} & \ldots & y_{2J} \\    
+					\vdots & \vdots & \ddots & \vdots \\
+					y_{N1} & y_{N2} & \ldots & y_{NJ} \\    
+					\end{array} \right].\label{2.35}
+				\end{equation}
+				
+				Para cada individuo $i$ se asume que existe un vector latente ${ \alpha  }_{ i }=\left[ { \alpha  }_{ i1 },{ \alpha  }_{ i2 },\ldots ,{ \alpha  }_{ ik } \right]$ tal que $\alpha_{i k}=1$ si el individuo $i$ posee el atributo $k$, y $\alpha_{i k}=0$ en caso contrario. Estos, que llamaremos perfiles latentes, son desconocidos y deben ser estimados.
+				Para cada item $j$, se separan a los individuos en  $2^{k_{j}^{*}}$ grupos latentes ($l$), donde ${K}_{ j }^{ * }=\sum _{ k=1 }^{ K }{ { q }_{ jk }}$ representa el n\'{u}mero de atributos requeridos para el item $j$. As\'{i}, cada individuo pertenecer\'{a} a solo una de estas clases. La presencia o ausencia de los atributos que no se requieren para responder correctamente este item, no afecta la pertenencia de un individuo a una u otra clase.
+				
+				Retornando al ejemplo en la matriz $Q$ dada en (2.22), vemos que el item 3 solo requiere de la presencia de 3 atributos por lo que para este item se forman ${2}^{3}=8$ grupos latentes.\
+				
+				Con el fin de simplificar la notaci\'{o}n y sin perder generalidad, consideraremos siempre que son los primeros ${K}_{ j }^{*}$ atributos los requeridos para responder correctamente el item $j$, y que correspondientemente ${a}_{ lj }^{ * }$ es el vector binario de dimensi\'{o}n ${ K }_{ j }^{ * }$ que contiene 1s solo si un individuo cualquiera de la clase $l$ posee tales componentes para responder correctamente el item $j$. Por ejemplo, el item 10 en la matriz solo requiere dos atributos para ser respondido correctamente, por lo que el vector ${ a }_{ lj }$ toma el valor de ${ a }_{ lj }^{ * }=\left( { a }_{ lj1 },{ a }_{ lj2 } \right)$, en lugar del vector completo $\left( { a }_{ lj1 },{ a }_{ lj2 },{ a }_{ lj3 },{ a }_{ lj4 } \right)$
+				
+				En modelos m\'{a}s sencillos como el DINA, carecer de un atributo requerido para determinado item, es lo mismo que carecer de todos los atributos requeridos. Sin embargo, esto podr\'{i}a no ser siempre cierto, ya que un individuo que posee alguno de los ${K }_{ j }^{ * }$ atributos requeridos para el item $j$, podr\'{i}a tener mayor probabilidad de responder correctamente que aquel que no tiene ninguno. El modelo G-DINA relaja esta hip\'{o}tesis de igual probabilidad de \'{e}xito.
+				
+				Por esta raz\'{o}n es importante establecer una relaci\'{o}n entre los vectores $\alpha_{l j}^{*}$ y $\alpha_{l^{\prime} j}^{*}$ que denotan a los estados de conocimiento o perfiles de atributos de 2 sujetos en las clases $l$ y ${ l }^{ \prime  }$. As\'{i}, para esta investigaci\'{o}n, diremos que $\alpha_{l j}^{*}<\alpha_{l^{\prime} j}^{*}$, si $\alpha_{l j}^{*}$ posee menos atributos de los requeridos para el item $j$ que $\alpha_{l^{\prime} j}^{*}$, es decir, $\sum_{k=1}^{K_{j}^{*}} \alpha_{l j k}^{*}<\sum_{k=1}^{K_{j}^{*}} \alpha_{l^{\prime} j k}^{*}$\\ 
+				En el ejemplo de la matriz $Q$, para el item 3, que requiere la presencia de tres atributos, podemos afirmar que el vector de estado $a_{ l3 }^{ * }=(0,0,1)$ es menor que el vector $a_{l^{\prime}3 }^{ * }=(1,1,0)$, ya que posee una menor cantidad de atributos requeridos.
+				
+				En adelante denotaremos a la probabilidad de que los entrevistados con perfil de atributos  $\alpha_{l j}^{*}$ respondan el item $j$ correctamente por:
+				$P\left(X_{j}=1 | \alpha_{l j}^{*}\right)=P\left(\alpha_{l j}^{*}\right)$, siendo $X_{j}$ la variable aleatoria que denota la respuesta de un entrevistado al item $j$. Como es natural estas probabilidades deber\'{a}n de satisfacer que $P\left(\alpha_{l j}^{*}\right) \leq P\left(\alpha_{l^{\prime} j}^{*}\right)$ cuando $\alpha_{l j}^{*}<\alpha_{l^{\prime} j}^{*}$ . El modelo G-DINA plantea para estas probabilidades la siguiente ecuaci\'{o}n:
+				
+				\begin{equation}
+					P\left(\alpha_{l j}^{*}\right)=\delta_{j 0}+\sum_{k=1}^{K_{j}^{*}} \delta_{j k} \alpha_{l k}+\sum_{k=1}^{K_{j}^{*}-1} \sum_{k^{\prime}=k+1}^{K_{j}^{*}} \delta_{j k k^{\prime} \alpha_{l k} \alpha_{l k^{\prime}}}+\ldots+\delta_{j 12 \ldots K_{j}^{*}} \prod_{k=1}^{K_{j}^{*}} \alpha_{l k}, \label{2.36}
+				\end{equation}
+				
+				donde $\delta_{j}=\left(\delta_{j 0}, \delta_{j 1}, \ldots, \delta_{j K_{j}^{*}}, \delta_{j 12}, \ldots, \delta_{j 12 \ldots K_{j}^{*}}\right)$, representa un vector de par\'{a}metros a estimarse para el item $j$, $\delta_{j0}$ es un par\'{a}metro de intercepto (concretamente la probabilidad de que los encuestados respondan correctamente al item $j$ cuando no posean ninguno de los atributos requeridos para responder satisfactoriamente este item), ${ \delta  }_{ jk }$ representa el efecto principal debido al atributo $k$ (el incremento marginal en la probabilidad de responder correctamente al item $j$ como resultado de la presencia del atributo $k$); ${\delta}_{jkkj}$ representa el efecto de segundo orden, (el incremento marginal en la probabilidad de obtener una respuesta correcta debido a la presencia de los atributos $k$ y ${ k }_{ j }$); y as\'{i} sucesivamente hasta ${ \delta  }_{ j12\ldots { { k }_{ j }^{ * } } }$ que representa el cambio en la probabilidad de obtener una respuesta correcta debido a la presencia de todos los atributos requeridos.
+				Uno de los aspectos que resaltan la importancia del modelo G-DINA, es que adem\'{a}s de medir la contribuci\'{o}n marginal de poseer un atributo particular en las probabilidades de responder correctamente un item, puede medir tambi\'{e}n (si existiera) el efecto conjunto de dos o m\'{a}s atributos en ella.
+				
+				     
+				
+				
+				
+				
+		
+		
