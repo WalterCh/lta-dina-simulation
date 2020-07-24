@@ -127,7 +127,7 @@ alphas_trans <- alphas %>%
          X4_nm = ifelse(Y4 == 1 & X4 == 0, 1, 0),
          X4_mm = ifelse(Y4 == 1 & X4 == 0, 1, 0),
          X4_mn = ifelse(Y4 == 0 & X4 == 1, 1, 0),
-         X4_nn = ifelse(Y4 == 0 & X4 == 0, 1, 0),) %>% 
+         X4_nn = ifelse(Y4 == 0 & X4 == 0, 1, 0)) %>% 
   select(X1_nm:X4_nn)
 
 trans_mat <- matrix(colMeans(alphas_trans), nrow = 4, ncol = 4, byrow = TRUE)

@@ -1,14 +1,9 @@
 ---
 title: "Explicacion de dina_analysis.R"
-author: "Walter Chanavá"
-date: "23/7/2020"
 output: 
   html_document:
     df_print: paged
     fig_caption: true
-    toc: true
-    toc_float: true
-    number_sections: true
     
 ---
 
@@ -20,10 +15,6 @@ knitr::opts_chunk$set(echo = T,
                       warning = F)
 load("~/walteR/lta-dina-simulation/R-Scripts/environment.RData")
 ```
-
-## *dina_analysis.R* por partes:
-
-
 
 ```{r, eval=FALSE}
 # Data Simulation ---------------------------------------------------------
@@ -111,7 +102,7 @@ p_transic <- tibble("Habilidades" = c("Número y Operaciones", "Medición",
 write.csv(p_transic, "./Tablas/P_Transicion.csv")
 ```
 
-```{r, collapse=TRUE}
+```{r, echo=TRUE}
 p_transic
 ```
 
@@ -128,7 +119,7 @@ prof_comb <- Q_tbl %>%
   pull(comb)
 ```
 
-```{r, collapse=TRUE}
+```{r, echo=TRUE}
 prof_comb
 ```
 
@@ -142,7 +133,7 @@ alphas <- as.tbl(dina$alphas) %>%
 colnames(alphas) = c(paste0("X", 1:4), paste0("Y", 1:4))
 ```
 
-```{r, collapse=TRUE}
+```{r, echo=FALSE}
 alphas
 ```
 
@@ -150,7 +141,6 @@ alphas
 Se toman las alphas de la simulacion, se les quita el `id` y se cambian los nombres de las columnas de X para las habilidades en tiempo1 y Y para el tiempo 2
 
 ```{r, eval=FALSE}
-
 alphas_t1 <- alphas %>% 
   select(X1:X4) %>% 
   mutate(comb = paste0(X1, X2, X3, X4)) %>%  
@@ -169,3 +159,114 @@ write.csv(alphas_t1, "./Tablas/Frec_Prop_T1.csv")
 write.csv(alphas_t2, "./Tablas/Frec_Prop_T2.csv")
 ```
 
+Se separaron los alphas para cada uno de los dos tiempos. 
+
+```{r, eval=FALSE}
+# 4.6
+mean(alphas$X1)
+mean(alphas$X2)
+
+alphas_trans <- alphas %>% 
+  mutate(X1_nm = ifelse(Y1 == 1 & X1 == 0, 1, 0),
+         X1_mm = ifelse(Y1 == 1 & X1 == 0, 1, 0),
+         X1_mn = ifelse(Y1 == 0 & X1 == 1, 1, 0),
+         X1_nn = ifelse(Y1 == 0 & X1 == 0, 1, 0),
+         X2_nm = ifelse(Y2 == 1 & X2 == 0, 1, 0),
+         X2_mm = ifelse(Y2 == 1 & X2 == 0, 1, 0),
+         X2_mn = ifelse(Y2 == 0 & X2 == 1, 1, 0),
+         X2_nn = ifelse(Y2 == 0 & X2 == 0, 1, 0),
+         X3_nm = ifelse(Y3 == 1 & X3 == 0, 1, 0),
+         X3_mm = ifelse(Y3 == 1 & X3 == 0, 1, 0),
+         X3_mn = ifelse(Y3 == 0 & X3 == 1, 1, 0),
+         X3_nn = ifelse(Y3 == 0 & X3 == 0, 1, 0),
+         X4_nm = ifelse(Y4 == 1 & X4 == 0, 1, 0),
+         X4_mm = ifelse(Y4 == 1 & X4 == 0, 1, 0),
+         X4_mn = ifelse(Y4 == 0 & X4 == 1, 1, 0),
+         X4_nn = ifelse(Y4 == 0 & X4 == 0, 1, 0)) %>% 
+  select(X1_nm:X4_nn)
+```
+
+```{r, echo=FALSE}
+alphas_trans
+```
+
+Al inicio calculo unas medias de 2 habilidades, pero no las guarde en ninguna variable, tal vez, solo estaba probando que eran. Luego se creo la tabla con las transiciones, cumpliendo las condiciones de transicion de cada estado (de X a Y). 
+
+```{r, eval=FALSE}
+trans_mat <- matrix(colMeans(alphas_trans), nrow = 4, ncol = 4, byrow = TRUE)
+
+tbl_trans <- tibble("Habilidades" = c("Número y Operaciones", "Medición", 
+                         "Solución de problemas", "Representación"),
+       pm1 = c(mean(alphas$X1), mean(alphas$X2), mean(alphas$X3),
+               mean(alphas$X4)),
+       pmn = trans_mat[,1],
+       pmm = trans_mat[,2],
+       pnm = trans_mat[,3],
+       pnn = trans_mat[,4])
+write.csv(tbl_trans, "./Tablas/4.6 Tabla_prop_trans.csv")
+```
+
+```{r, echo=FALSE}
+tbl_trans
+```
+
+Usando la tabla de los alphas y la tabla anterior se cre la tabla con los varores de transicion de cada habilidad.
+
+```{r, eval=FALSE}
+# Plots -------------------------------------------------------------------
+loadfonts()
+custom_theme <- theme(
+  axis.text = element_text(size = 15),
+  axis.title = element_text(size = 16),
+  legend.text = element_text(size = 15),
+  legend.title = element_text(size = 15),
+  legend.position = "none",
+  panel.background = element_blank(),
+  panel.border = element_rect(size = 1, fill = NA),
+  plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
+  text = element_text(family = "Poppins")
+)
+
+tbl_trans_plot <- tibble(
+  Habilidades = c(rep(tbl_trans$Habilidades[1], 5),
+                  rep(tbl_trans$Habilidades[2], 5),
+                  rep(tbl_trans$Habilidades[3], 5),
+                  rep(tbl_trans$Habilidades[4], 5)),
+  p_trans1 = rep(colnames(tbl_trans)[2:6], times = 4),
+  p_trans = c(as.numeric(tbl_trans[1,2:6]), as.numeric(tbl_trans[2,2:6]), 
+              as.numeric(tbl_trans[3,2:6]), as.numeric(tbl_trans[4,2:6]))
+)
+```
+
+```{r, echo=FALSE}
+tbl_trans_plot
+```
+
+Con la seccion `# Plots ---` primero se cargan las fuentes con `loadfonts()`, luego se carga mi tema personalizado para ggplots y se crea una nueva tabla con los valores de transicion por habilidad con el formato adecuado para graficar con ggplot2.
+
+```{r, eval=FALSE}
+# Transition plot
+trans_plot <- ggplot(data = tbl_trans_plot, aes(x = Habilidades, y = p_trans, 
+                                  fill = p_trans1)) +
+  geom_bar(stat = 'identity', position = 'dodge') +
+  scale_fill_manual(labels = c("Pm1","Pmm","Pmn","Pnm","Pnn"),
+                    values = RColorBrewer::brewer.pal(5, "Set1")) +
+  custom_theme +
+  theme(legend.position = 'right', legend.title = element_blank(),
+        axis.text = element_text(size = 10)) +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  labs(y = 'Probabilidad de transición', 
+       title="Probabilidades de transicion estimadas para el \n modelo LTA-DINA") +
+  coord_flip() +
+  scale_y_continuous(limits = c(0, .53))
+
+# Export function of transition plot
+ggsave(filename = "../Imagenes/Probabilidades_transicion.pdf", 
+       plot = trans_plot, device = "pdf", width = 6, height = 5)
+```
+
+```{r, echo=FALSE}
+trans_plot
+```
+
+Ya por ultimo, se grafica la matriz de transicion y se exporta con `ggsave()`.
