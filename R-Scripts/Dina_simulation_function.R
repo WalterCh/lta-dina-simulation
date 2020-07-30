@@ -38,7 +38,7 @@ dina_data_sim <- function(slip_guess_min, slip_guess_max, cor_skills = .5,
       for (a in 1:skills) {
         x_s1[g,h] <- x_s1[g,h] * (alpha_dico_t1[g,a]^Q[h,a])
       }
-      resp_dina1[g,h] = (1 - slip_par[h]^x_s1[g,h]) * 
+      resp_dina1[g,h] <- (1 - slip_par[h])^x_s1[g,h] * 
         guess_par[h]^(1 - x_s1[g,h])
     }
   }
