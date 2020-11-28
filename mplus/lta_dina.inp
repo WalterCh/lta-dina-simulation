@@ -1,6 +1,6 @@
-TITLE: !GC - DINA model for T=2
+TITLE: !GC - LTA-DINA model for T=2
 DATA:
-  FILE IS C:\Users\Usuario\Dropbox\Dina\Data\lta_dina.dat;
+  FILE IS C:\Users\Usuario\Dropbox\Dina\Data\lta-dina-t2.dat;
 VARIABLE:  NAMES ARE
         x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12
         x13 x14 x15 x16 x17 x18 x19 x20 y1 y2

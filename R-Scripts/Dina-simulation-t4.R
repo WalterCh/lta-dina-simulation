@@ -165,6 +165,7 @@ while (val == 0) {
 
 
 
+
 # Patameters retribution --------------------------------------------------
 
 params_dina_t1 <- din(data = dina_sim$data[,1:20],
@@ -302,3 +303,24 @@ prop_master_plot <- ggplot(data = prop_master_tbl2,
 
 ggsave("./Imagenes/Prop. maestria por cada tiempo T3.pdf", prop_master_plot,
        width = 7, height = 6)
+
+
+# Mplus Automation --------------------------------------------------------
+
+# library(MplusAutomation)
+# 
+# # Preparing data
+# prepareMplusData(dina_sim$data[,1:40], "./Data/lta-dina-t2.dat")
+# 
+# # Model
+# runModels("C:/Users/Usuario/Dropbox/Dina/mplus", showOutput = TRUE)
+# output <- readModels("C:/Users/Usuario/Dropbox/Dina/mplus/lta_dina.out")
+# 
+# # 
+# model_c <- output$savedata %>% select(C1:C8)
+# model_c <- ifelse(model_c == 1, 0, 1)
+# 
+# tibble(pm1 = as.numeric(colMeans(model_c)[1:4]),
+#        pnm = )
+
+

@@ -1,3 +1,5 @@
+# Funcion que permite modificar las proporciones de dominio por habilidad
+# (por defecto, las proporciones son 0.5 de dominio)
 alpha_prop_changer <- function(alphas_t, prop) {
   alphas_new <- alphas_t
   for (i_prop in 1:length(prop)) {
