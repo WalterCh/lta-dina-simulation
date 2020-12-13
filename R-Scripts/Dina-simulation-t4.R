@@ -8,8 +8,6 @@ while (val == 0) {
   
   source("./R-Scripts/Custom-ggplot2-theme.R")
   
-  set.seed(42)
-  
   Q <- matrix(c(1,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,
                 0,0,1,0,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,
                 1,0,1,1,1,1,0,1,0,1,1,0,0,1,1,0,0,0), 
@@ -18,8 +16,10 @@ while (val == 0) {
   items  <- nrow(Q)
   skills <- ncol(Q)
   
-  slip_par  <- runif(items, min = .1, max = .3)
-  guess_par <- runif(items, min = .1, max = .3)
+  slip_par  <- c(.281, .128, .3, .289, .116, .203, .178, .281, .189, .267, .247,
+                 .262, .178, .237, .101, .266, .101, .142, .281, .222)
+  guess_par <- c(.283, .287, .157, .266, .228, .204, .247, .127, .231, .241,
+                 .192, .244, .287, .151, .192, .288, .296, .123, .195, .212)
   
   sigma <- matrix(c(1, .5, .5, .5,
                     .5, 1, .5, .5,
@@ -254,23 +254,34 @@ write.csv(prop_master_tbl,
           row.names = FALSE)
 
 # Proportions of mastery patterns over four skills at each time point
-alpha_dico_tbl <- tibble(pattern = c(paste(alpha_t1_dico[,1],
-                                           alpha_t1_dico[,2],
-                                           alpha_t1_dico[,3],
-                                           alpha_t1_dico[,4]),
-                                     paste(alpha_t2_dico[,1],
-                                           alpha_t2_dico[,2],
-                                           alpha_t2_dico[,3],
-                                           alpha_t2_dico[,4]),
-                                     paste(alpha_t3_dico[,1],
-                                           alpha_t3_dico[,2],
-                                           alpha_t3_dico[,3],
-                                           alpha_t3_dico[,4]),
-                                     paste(alpha_t4_dico[,1],
-                                           alpha_t4_dico[,2],
-                                           alpha_t4_dico[,3],
-                                           alpha_t4_dico[,4])),
-                         t = rep(1:4, each = 1000))
+alpha_dico_tbl <- tibble(
+  pattern = c(
+    paste(
+      alpha_t1_dico[, 1],
+      alpha_t1_dico[, 2],
+      alpha_t1_dico[, 3],
+      alpha_t1_dico[, 4]
+    ),
+    paste(
+      alpha_t2_dico[, 1],
+      alpha_t2_dico[, 2],
+      alpha_t2_dico[, 3],
+      alpha_t2_dico[, 4]
+    ),
+    paste(
+      alpha_t3_dico[, 1],
+      alpha_t3_dico[, 2],
+      alpha_t3_dico[, 3],
+      alpha_t3_dico[, 4]
+    ),
+    paste(
+      alpha_t4_dico[, 1],
+      alpha_t4_dico[, 2],
+      alpha_t4_dico[, 3],
+      alpha_t4_dico[, 4]
+    )
+),
+t = rep(1:4, each = 1000))
 alpha_dico_pat_tbl <- alpha_dico_tbl %>% 
   group_by(pattern, t) %>% 
   summarise(n = n())
